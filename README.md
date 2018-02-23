@@ -1,1 +1,3 @@
-# stores.shopterra.com
+stores.shopterra.com
+
+ThemeKit (Timber template)
