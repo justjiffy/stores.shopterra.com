@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
+import { baseUrl } from './services/api';
 
 class App extends Component {
+  componentDidMount() {
+    fetch(baseUrl+"graph", {
+      method: "post",
+      headers: {"Content-Type":"application/json",
+                "Accept": 'application/json'
+      },
+      body: JSON.stringify({ query: `
+        {
+          hello {
+            hi
+          }
+        }
+        `})
+     })
+     .then(body => body.json())
+     .then(body => console.log(body));
+  }
   render() {
     return (
       <div className="App">
