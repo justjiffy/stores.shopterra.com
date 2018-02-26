@@ -4,22 +4,35 @@ import './App.css';
 import { baseUrl } from './services/api';
 
 class App extends Component {
-  componentDidMount() {
-    fetch(baseUrl+"graph", {
+  constructor(props) {
+    super(props)
+    this.state = {
+      products: []
+    }
+    this.fetchProducts = this.fetchProducts.bind(this)
+  }
+  fetchProducts() {
+    fetch(baseUrl+"/graph", {
       method: "post",
-      headers: {"Content-Type":"application/json",
-                "Accept": 'application/json'
+      headers: {
+        "Content-Type":"application/json",
+        "Accept": 'application/json'
       },
       body: JSON.stringify({ query: `
         {
-          hello {
-            hi
+          products {
+            title
+            images
           }
         }
-        `})
+      `})
      })
-     .then(body => body.json())
-     .then(body => console.log(body));
+     .then(res => res.json())
+     .then(data => {
+       const products = data.data.products
+       this.setState({products})
+       return products
+     });
   }
   render() {
     return (
@@ -28,8 +41,29 @@ class App extends Component {
           <img src={logo} className="logo" alt="Shopterra" />
         </header>
         <p className="App-intro">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/RE5HOvtNHWQ?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+          <iframe title="Shopterra" width="560" height="315" src="https://www.youtube.com/embed/RE5HOvtNHWQ?rel=0&amp;controls=0&amp;showinfo=0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen=""></iframe>
         </p>
+        <div className="product-list">
+        { !this.state.products.length ?
+          <button onClick={this.fetchProducts}>Fetch Products</button> :
+          this.state.products.map((p,i) => {
+            return(
+              <div key={i}>
+                <h2>{p.title}</h2>
+                <div>
+                {
+                  p.images.map((url, idx) => {
+                    return(
+                      <img key={idx} alt={`${p.title} ${idx}`} style={{width: '200px', height: 'auto'}} src={url} />
+                    )
+                  })
+                }
+                </div>
+              </div>
+            )
+          })
+        }
+        </div>
       </div>
     );
   }
