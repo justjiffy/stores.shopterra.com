@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
 import { baseUrl } from './services/api';
+import { Login } from './Mock.js';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      products: []
+      products: [],
     }
     this.fetchProducts = this.fetchProducts.bind(this)
   }
@@ -43,6 +44,7 @@ class App extends Component {
         <p className="App-intro">
           <iframe title="Shopterra" width="560" height="315" src="https://www.youtube.com/embed/RE5HOvtNHWQ?rel=0&amp;controls=0&amp;showinfo=0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen=""></iframe>
         </p>
+        <Login />
         <div className="product-list">
         { !this.state.products.length ?
           <button onClick={this.fetchProducts}>Fetch Products</button> :
