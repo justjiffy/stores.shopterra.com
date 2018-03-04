@@ -47,20 +47,23 @@ export function handleSubmit(event) {
   //    })
   //    .then(res => res.json())
   //    .then(data => { ...
-  users.map((user) => {
-    return new Promise((resolve, reject) => {
-      if(user.email === this.state.login) {
-        this.setState({
-          showForm: false,
-          loggedIn: true
-        })
-        return resolve()
-      } else {
-        return resolve("Login or Password is not correct")
-      }
-    }, err => {
-      return console.log('ERROR');
-    })
+  const u = users.find(usr => usr.email == this.state.login)
+  return new Promise((resolve, reject) => {
+    if(u === undefined) {
+      console.log('login not found')
+      return resolve("Login/Email not found")
+    } else if(u.password === this.state.password) {
+      this.setState({
+        showForm: false,
+        loggedIn: true
+      })
+      return resolve()
+    } else {
+      console.log('Wrong Password')
+      return resolve("Password is not correct")
+    }
+  }, err => {
+    return console.log('ERROR');
   })
 }
 
