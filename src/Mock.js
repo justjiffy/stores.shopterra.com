@@ -4,20 +4,22 @@ import './App.css';
 export const stores = [
   {
     name: "John's Natural",
-    user: 0
+    userID: 0
   },
   {
     name: "VeggieScrubbers",
-    users: 1
+    userID: 1
   }
 ]
 
 export const users = [
   {
+    id: 0,
     email: "info@johnsnatural.com",
     password: "test123"
   },
   {
+    id: 1,
     email: "info@veggiescrubbers.com",
     password: "test321"
   }
@@ -29,7 +31,6 @@ export function showLogin(event) {
 
 export function handleSubmit(event) {
   event.preventDefault();
-  //  LOOK THROUGH USERS, if user match is found, check password, if password matches, log in
   //   fetch(baseUrl+"/graphiql", {
   //     method: "post",
   //     headers: {
@@ -50,20 +51,20 @@ export function handleSubmit(event) {
   const u = users.find(usr => usr.email == this.state.login)
   return new Promise((resolve, reject) => {
     if(u === undefined) {
-      console.log('login not found')
       return resolve("Login/Email not found")
     } else if(u.password === this.state.password) {
+      const s = stores.find(str => str.userID == u.id)
       this.setState({
         showForm: false,
-        loggedIn: true
+        loggedIn: true,
+        shop: s.name
       })
       return resolve()
     } else {
-      console.log('Wrong Password')
       return resolve("Password is not correct")
     }
   }, err => {
-    return console.log('ERROR');
+    console.log('error: ', err)
   })
 }
 
@@ -91,12 +92,12 @@ export class Login extends Component {
     return (
       <div className="store-login">
         { this.state.loggedIn ?
-          <h3>Logged In!</h3> :
+          <h3>{this.state.shop}</h3> :
             <form onSubmit={this.handleSubmit}>
               <label>Login: </label>
               <input type="text" id="login" value={this.state.login} onChange={this.handleChange} />
               <label> Password: </label>
-              <input type="text" id="password" value={this.state.password} onChange={this.handleChange} />
+              <input type="password" id="password" value={this.state.password} onChange={this.handleChange} />
               <input type="submit" value="submit" />
             </form>
         }
