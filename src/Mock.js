@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 
-
 export const stores = [
   {
     name: "John's Natural",
@@ -12,7 +11,6 @@ export const stores = [
     users: 1
   }
 ]
-
 
 export const users = [
   {
@@ -25,6 +23,46 @@ export const users = [
   }
 ]
 
+export function showLogin(event) {
+  this.setState({showForm: true})
+}
+
+export function handleSubmit(event) {
+  event.preventDefault();
+  //  LOOK THROUGH USERS, if user match is found, check password, if password matches, log in
+  //   fetch(baseUrl+"/graphiql", {
+  //     method: "post",
+  //     headers: {
+  //       "Content-Type":"application/json",
+  //       "Accept": 'application/json'
+  //     },
+  //     body: JSON.stringify({ query: `
+  //       {
+            // user {
+            //   login
+            //   password
+            // }
+  //       }
+  //     `})
+  //    })
+  //    .then(res => res.json())
+  //    .then(data => { ...
+  users.map((user) => {
+    return new Promise((resolve, reject) => {
+      if(user.email === this.state.login) {
+        this.setState({
+          showForm: false,
+          loggedIn: true
+        })
+        return resolve()
+      } else {
+        return resolve("Login or Password is not correct")
+      }
+    }, err => {
+      return console.log('ERROR');
+    })
+  })
+}
 
 export class Login extends Component {
   constructor(props) {
@@ -32,13 +70,12 @@ export class Login extends Component {
     this.state = {
       loggedIn: false,
       showForm: false,
-      login:"",
-      password:"",
+      login: "",
+      password: "",
       shop: ""
     }
-    this.showLogin = this.showLogin.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = handleSubmit.bind(this)
   }
 
   handleChange(event, data) {
@@ -47,56 +84,18 @@ export class Login extends Component {
       this.setState({ password: event.target.value })
   }
 
-  showLogin(event) {
-    this.setState({showForm: true})
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    //  LOOK THROUGH USERS, if user match is found, check password, if password matches, log in
-    //   fetch(baseUrl+"/graphiql", {
-    //     method: "post",
-    //     headers: {
-    //       "Content-Type":"application/json",
-    //       "Accept": 'application/json'
-    //     },
-    //     body: JSON.stringify({ query: `
-    //       {
-              // user {
-              //   login
-              //   password
-              // }
-    //       }
-    //     `})
-    //    })
-    //    .then(res => res.json())
-    //    .then(data => { ...
-    users.map((user) => {
-      console.log(user.email, this.state.login);
-      if(user.email === this.state.login)
-        this.setState({
-          showForm: false,
-          loggedIn: true
-        })
-    });
-  }
-
   render() {
     return (
       <div className="store-login">
-        { this.state.showForm ?
-          <form onSubmit={this.handleSubmit}>
-            <label>Login: </label>
-            <input type="text" id="login" value={this.state.login} onChange={this.handleChange} />
-            <label> Password: </label>
-            <input type="text" id="password" value={this.state.password} onChange={this.handleChange} />
-            <input type="submit" value="submit" />
-          </form> :
-          <button onClick={this.showLogin}>Store Login</button>
-        }
         { this.state.loggedIn ?
           <h3>Logged In!</h3> :
-          <h3></h3>
+            <form onSubmit={this.handleSubmit}>
+              <label>Login: </label>
+              <input type="text" id="login" value={this.state.login} onChange={this.handleChange} />
+              <label> Password: </label>
+              <input type="text" id="password" value={this.state.password} onChange={this.handleChange} />
+              <input type="submit" value="submit" />
+            </form>
         }
       </div>
     );

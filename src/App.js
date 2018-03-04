@@ -40,11 +40,11 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="logo" alt="Shopterra" />
+          <Login />
         </header>
         <p className="App-intro">
           <iframe title="Shopterra" width="560" height="315" src="https://www.youtube.com/embed/RE5HOvtNHWQ?rel=0&amp;controls=0&amp;showinfo=0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen=""></iframe>
         </p>
-        <Login />
         <div className="product-list">
         { !this.state.products.length ?
           <button onClick={this.fetchProducts}>Fetch Products</button> :
