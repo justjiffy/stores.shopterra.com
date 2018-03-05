@@ -8,11 +8,12 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      loggedIn: false,
       products: [],
     }
     this.fetchProducts = this.fetchProducts.bind(this)
   }
-  fetchProducts() {
+  fetchProducts = (shop) => {
     fetch(baseUrl+"/graph", {
       method: "post",
       headers: {
@@ -31,23 +32,21 @@ class App extends Component {
      .then(res => res.json())
      .then(data => {
        const products = data.data.products
+       //check to make sure vendors match, if so, load products... 
        this.setState({products})
        return products
-     });
+     })
+     .then(this.setState({loggedIn: true}));
   }
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="logo" alt="Shopterra" />
-          <Login />
         </header>
-        <p className="App-intro">
-          <iframe title="Shopterra" width="560" height="315" src="https://www.youtube.com/embed/RE5HOvtNHWQ?rel=0&amp;controls=0&amp;showinfo=0" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen=""></iframe>
-        </p>
         <div className="product-list">
-        { !this.state.products.length ?
-          <button onClick={this.fetchProducts}>Fetch Products</button> :
+        { !this.state.loggedIn ?
+          <Login fetchProducts={this.fetchProducts} /> :
           this.state.products.map((p,i) => {
             return(
               <div key={i}>
