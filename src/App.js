@@ -9,6 +9,7 @@ class App extends Component {
     super(props)
     this.state = {
       loggedIn: false,
+      vendor: [],
       products: [],
     }
     this.fetchProducts = this.fetchProducts.bind(this)
@@ -32,11 +33,16 @@ class App extends Component {
      .then(res => res.json())
      .then(data => {
        const products = data.data.products
+       console.log('Vendor/shop:', shop);
        //check to make sure vendors match, if so, load products...
        this.setState({products})
        return products
      })
-     .then(this.setState({loggedIn: true}));
+     .then(
+       this.setState({
+         loggedIn: true,
+         vendor: shop,
+       }));
   }
   render() {
     return (
@@ -47,22 +53,26 @@ class App extends Component {
         <div className="product-list">
         { !this.state.loggedIn ?
           <Login fetchProducts={this.fetchProducts} /> :
-          this.state.products.map((p,i) => {
-            return(
-              <div key={i}>
-                <h2>{p.title}</h2>
-                <div>
-                {
-                  p.images.map((url, idx) => {
-                    return(
-                      <img key={idx} alt={`${p.title} ${idx}`} style={{width: '200px', height: 'auto'}} src={url} />
-                    )
-                  })
-                }
+          <h1>Welcome</h1>
+        }
+        { this.state.products.length ?
+            this.state.products.map((p,i) => {
+              return(
+                <div key={i}>
+                  <h2>{p.title}</h2>
+                  <div>
+                  {
+                    p.images.map((url, idx) => {
+                      return(
+                        <img key={idx} alt={`${p.title} ${idx}`} style={{width: '200px', height: 'auto'}} src={url} />
+                      )
+                    })
+                  }
+                  </div>
                 </div>
-              </div>
-            )
-          })
+              )
+            }) :
+          <div></div>
         }
         </div>
       </div>
