@@ -23,5 +23,7 @@ form {
   form label {
     display: block;
     margin-top: 1em; }
+  form input {
+    margin-left: 1em; }
   form button {
     margin-top: 1em; }

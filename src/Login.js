@@ -1,35 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import {vendors, users} from './services/db'
 
-export const stores = [
-  {
-    name: "John's Natural",
-    userID: 0,
-    logo: "",
-    location: "",
-    tags: [],
-  },
-  {
-    name: "VeggieScrubbers",
-    userID: 1,
-    logo: "",
-    location: "",
-    tags: [],
-  }
-]
-
-export const users = [
-  {
-    id: 0,
-    email: "info@johnsnatural.com",
-    password: "test123"
-  },
-  {
-    id: 1,
-    email: "info@veggiescrubbers.com",
-    password: "test321"
-  }
-]
 
 export class Login extends Component {
   constructor(props) {
@@ -39,16 +11,14 @@ export class Login extends Component {
       showForm: false,
       login: "",
       password: "",
-      shop: ""
+      vendor: ""
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange(event, data) {
-    event.target.id === "login" ?
-      this.setState({ login: event.target.value }) :
-      this.setState({ password: event.target.value })
+  handleChange(event) {
+    this.setState({ [event.target.id]: event.target.value })
   }
 
   handleSubmit(event) {
@@ -75,35 +45,25 @@ export class Login extends Component {
       if(u === undefined) {
         return resolve("Login/Email not found")
       } else if(u.password === this.state.password) {
-        const s = stores.find(str => str.userID === u.id)
-        this.setState({
-          showForm: false,
-          loggedIn: true,
-          shop: s
-        })
-        this.props.fetchProducts(s)
-        return resolve()
+        return resolve(this.props.login(u))
       } else {
         return resolve("Password is not correct")
       }
     })
-    // what does this part do? why isn't resolve recognized?
-    //, err => {
-      // resolve(err)
-    // })
   }
+
   render() {
     return (
       <div className="store-login">
         { this.state.loggedIn ?
-          <h3>{this.state.shop.name}</h3> :
+          <h3>{this.state.vendor.name}</h3> :
             <form onSubmit={this.handleSubmit}>
-              <label>Login: </label>
-              <input type="text" id="login" value={this.state.login} onChange={this.handleChange} />
-              <br />
-              <label> Password: </label>
-              <input type="password" id="password" value={this.state.password} onChange={this.handleChange} />
-              <br />
+              <label>Login:
+                <input type="text" id="login" value={this.state.login} onChange={this.handleChange} />
+              </label>
+              <label>Password:
+                <input type="password" id="password" value={this.state.password} onChange={this.handleChange} />
+              </label>
               <button type="submit" value="submit">SUBMIT</button>
             </form>
         }

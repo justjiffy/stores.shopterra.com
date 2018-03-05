@@ -3,46 +3,45 @@ import logo from './logo.png';
 import './App.css';
 import { baseUrl } from './services/api';
 import { Login } from './Login.js';
+import {
+  getVendor,
+  users,
+} from './services/db'
+import { ProductForm } from './ProductForm.js'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loggedIn: false,
-      vendor: [],
+      authedUser: "",
       products: [],
+      editProduct: [],
     }
     this.fetchProducts = this.fetchProducts.bind(this)
   }
-  fetchProducts = (shop) => {
-    fetch(baseUrl+"/graph", {
-      method: "post",
-      headers: {
-        "Content-Type":"application/json",
-        "Accept": 'application/json'
-      },
-      body: JSON.stringify({ query: `
-        {
-          products {
-            title
-            images
-          }
-        }
-      `})
-     })
-     .then(res => res.json())
-     .then(data => {
-       const products = data.data.products
-       console.log('Vendor/shop:', shop);
-       //check to make sure vendors match, if so, load products...
-       this.setState({products})
-       return products
-     })
-     .then(
-       this.setState({
-         loggedIn: true,
-         vendor: shop,
-       }));
+
+  componentWillUpdate(props, state) {
+      if (state.authedUser && !this.state.authedUser) {
+        this.fetchProducts(state.authedUser)
+      }
+  }
+  // componentDidMount() {
+  //   this.fetchProducts(this.state.authedUser)
+  // }
+
+  fetchProducts(u) {
+    return getVendor(u)
+    .then(vendor => {
+      return this.setState({products: vendor.products})
+    })
+  }
+
+  createProduct(p) {
+    console.log('Create Product', p)
+  }
+
+  modifyProduct(p) {
+    console.log('Modify Product', p)
   }
   render() {
     return (
@@ -51,33 +50,50 @@ class App extends Component {
           <img src={logo} className="logo" alt="Shopterra" />
         </header>
         <div className="product-list">
-        { !this.state.loggedIn ?
-          <Login fetchProducts={this.fetchProducts} /> :
-          <h1>Welcome</h1>
-        }
-        { this.state.products.length ?
-            this.state.products.map((p,i) => {
-              return(
-                <div key={i}>
-                  <h2>{p.title}</h2>
-                  <div>
-                  {
-                    p.images.map((url, idx) => {
-                      return(
-                        <img key={idx} alt={`${p.title} ${idx}`} style={{width: '200px', height: 'auto'}} src={url} />
-                      )
-                    })
-                  }
-                  </div>
-                </div>
-              )
-            }) :
-          <div></div>
-        }
+        { !this.state.authedUser ?
+          <Login login={(user)=>{
+              this.setState({authedUser:user})
+              return user
+          }} /> :
+          <div className="storefront">
+            <h1>Welcome {this.state.authedUser.email}</h1>
+            <p>Add Product:</p>
+            <ProductForm onSubmit={this.createProduct} />
+            <div className="product-list">
+              { !this.state.products.length ? <div>loading products...</div> :
+                this.state.products.map((p,i) => {
+                  return(
+                    <div className="product" key={i}>
+{                      /* <ProductForm onSubmit={this.modifyProduct} product={this.state.editProduct} /> */}
+                      <h2>{p.name}</h2>
+                      <h3>{p.price}</h3>
+                      <div>
+                      {
+                        p.images.map((img, idx) => {
+                          return(
+                            <img key={idx} alt={`${p.title} ${idx}`} style={{width: '200px', height: 'auto'}} src={img.url} />
+                          )
+                        })
+                      }
+                      </div>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </div> }
         </div>
       </div>
     );
   }
 }
+
+// export const mapStateToProps = (state) => {
+//   return {
+//     authedUser: state.user,
+//     vendor: state.vendor,
+//     products: state.products
+//   }
+// }
 
 export default App;
