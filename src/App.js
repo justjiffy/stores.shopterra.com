@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
 import { baseUrl } from './services/api';
-import { Login } from './Mock.js';
+import { Login } from './Login.js';
 
 class App extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class App extends Component {
      .then(res => res.json())
      .then(data => {
        const products = data.data.products
-       //check to make sure vendors match, if so, load products... 
+       //check to make sure vendors match, if so, load products...
        this.setState({products})
        return products
      })

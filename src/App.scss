@@ -22,3 +22,17 @@
 .product-list {
   padding: 3em 0;
 }
+
+form {
+  display: inline-block;
+  width: 300px;
+
+  label {
+    display: block;
+    margin-top: 1em;
+  }
+
+  button {
+    margin-top: 1em
+  }
+}

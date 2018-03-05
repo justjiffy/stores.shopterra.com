@@ -4,11 +4,17 @@ import './App.css';
 export const stores = [
   {
     name: "John's Natural",
-    userID: 0
+    userID: 0,
+    logo: "",
+    location: "",
+    tags: [],
   },
   {
     name: "VeggieScrubbers",
-    userID: 1
+    userID: 1,
+    logo: "",
+    location: "",
+    tags: [],
   }
 ]
 
@@ -24,10 +30,6 @@ export const users = [
     password: "test321"
   }
 ]
-
-export function showLogin(event) {
-  this.setState({showForm: true})
-}
 
 export class Login extends Component {
   constructor(props) {
@@ -48,6 +50,7 @@ export class Login extends Component {
       this.setState({ login: event.target.value }) :
       this.setState({ password: event.target.value })
   }
+
   handleSubmit(event) {
     event.preventDefault();
     //   fetch(baseUrl+"/graphiql", {
@@ -83,9 +86,11 @@ export class Login extends Component {
       } else {
         return resolve("Password is not correct")
       }
-    }, err => {
-      console.log('error: ', err)
     })
+    // what does this part do? why isn't resolve recognized?
+    //, err => {
+      // resolve(err)
+    // })
   }
   render() {
     return (
@@ -95,9 +100,11 @@ export class Login extends Component {
             <form onSubmit={this.handleSubmit}>
               <label>Login: </label>
               <input type="text" id="login" value={this.state.login} onChange={this.handleChange} />
+              <br />
               <label> Password: </label>
               <input type="password" id="password" value={this.state.password} onChange={this.handleChange} />
-              <input type="submit" value="submit" />
+              <br />
+              <button type="submit" value="submit">SUBMIT</button>
             </form>
         }
       </div>
