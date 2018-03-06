@@ -6,6 +6,9 @@ import { Login } from './Login.js';
 import {
   getVendor,
   users,
+  postProduct,
+  patchProduct,
+  deleteProduct
 } from './services/db'
 import { ProductForm } from './ProductForm.js'
 
@@ -13,11 +16,13 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      authedUser: "",
+      authedUser: null,
+      vendor: null,
       products: [],
       editProduct: [],
     }
     this.fetchProducts = this.fetchProducts.bind(this)
+    this.createProduct = this.createProduct.bind(this)
   }
 
   componentWillUpdate(props, state) {
@@ -32,12 +37,18 @@ class App extends Component {
   fetchProducts(u) {
     return getVendor(u)
     .then(vendor => {
-      return this.setState({products: vendor.products})
+      return this.setState({
+        vendor,
+        products: vendor.products
+      })
     })
   }
 
   createProduct(p) {
-    console.log('Create Product', p)
+    return postProduct(this.state.vendor,p)
+    .then(
+      products => { return this.setState({ products }) }
+    )
   }
 
   modifyProduct(p) {

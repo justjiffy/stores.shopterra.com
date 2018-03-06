@@ -54,8 +54,18 @@ export const getVendor = (user) => {
   return Promise.resolve(v)
 }
 
-export const postProduct = () => {
-
+export const postProduct = (vendor,product) => {
+  const v = vendors.find(ven => ven === vendor)
+  if (!v) { return console.error(`vendor ${vendor} not found`) }
+  else {
+    v.products.push({
+      name: product.name,
+      images: [{url: product.img}],
+      price: product.price,
+    })
+  }
+  console.log("db.js, v.production:", v.products);
+  return(Promise.resolve(v.products))
 }
 
 export const patchProduct = () => {
