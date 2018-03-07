@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {vendors, users} from './services/db'
+import {users} from './services/db'
 
 
 export class Login extends Component {
@@ -59,10 +59,10 @@ export class Login extends Component {
           <h3>{this.state.vendor.name}</h3> :
             <form onSubmit={this.handleSubmit}>
               <label>Login:
-                <input type="text" id="login" value={this.state.login} onChange={this.handleChange} />
+                <input type="text" id="login" value={this.state.login} onChange={this.handleChange} autoComplete="username" />
               </label>
               <label>Password:
-                <input type="password" id="password" value={this.state.password} onChange={this.handleChange} />
+                <input type="password" id="password" value={this.state.password} onChange={this.handleChange} autoComplete="current-password" />
               </label>
               <button type="submit" value="submit">SUBMIT</button>
             </form>
