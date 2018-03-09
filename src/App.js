@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.png';
 import './App.css';
-import { baseUrl } from './services/api';
 import { Login } from './Login.js';
 import {
   getVendor,
-  users,
   postProduct,
   patchProduct,
-  deleteProduct
 } from './services/db'
 import { ProductForm } from './ProductForm.js'
 
@@ -23,6 +20,7 @@ class App extends Component {
     }
     this.fetchProducts = this.fetchProducts.bind(this)
     this.createProduct = this.createProduct.bind(this)
+    this.modifyProduct = this.modifyProduct.bind(this)
   }
 
   componentWillUpdate(props, state) {
@@ -30,13 +28,9 @@ class App extends Component {
         this.fetchProducts(state.authedUser)
       }
   }
-  // componentDidMount() {
-  //   this.fetchProducts(this.state.authedUser)
-  // }
 
   fetchProducts(u) {
-    return getVendor(u)
-    .then(vendor => {
+    return getVendor(u).then(vendor => {
       return this.setState({
         vendor,
         products: vendor.products
@@ -45,15 +39,18 @@ class App extends Component {
   }
 
   createProduct(p) {
-    return postProduct(this.state.vendor,p)
+    return postProduct(this.state.vendor,p).then(products => {
+      return this.setState({ products })
+    })
+  }
+
+  modifyProduct(u, p) {
+    return patchProduct(this.state.vendor, u, p)
     .then(
-      products => { return this.setState({ products }) }
+      this.fetchProducts(this.state.authedUser)
     )
   }
 
-  modifyProduct(p) {
-    console.log('Modify Product', p)
-  }
   render() {
     return (
       <div className="App">
@@ -65,19 +62,21 @@ class App extends Component {
           <Login login={(user)=>{
               this.setState({authedUser:user})
               return user
-          }} /> :
+          }} />
+        :
           <div className="storefront">
             <h1>Welcome {this.state.authedUser.email}</h1>
             <p>Add Product:</p>
             <ProductForm onSubmit={this.createProduct} />
             <div className="product-list">
-              { !this.state.products.length ? <div>loading products...</div> :
+              { !this.state.products.length ?
+                <div>loading products...</div>
+              :
                 this.state.products.map((p,i) => {
                   return(
                     <div className="product" key={i}>
-{                      /* <ProductForm onSubmit={this.modifyProduct} product={this.state.editProduct} /> */}
                       <h2>{p.name}</h2>
-                      <h3>{p.price}</h3>
+                      <h3>${p.price}</h3>
                       <div>
                       {
                         p.images.map((img, idx) => {
@@ -87,24 +86,18 @@ class App extends Component {
                         })
                       }
                       </div>
+                      <ProductForm onSubmit={this.modifyProduct} product={p} />
                     </div>
                   )
                 })
               }
             </div>
-          </div> }
+          </div>
+        }
         </div>
       </div>
     );
   }
 }
-
-// export const mapStateToProps = (state) => {
-//   return {
-//     authedUser: state.user,
-//     vendor: state.vendor,
-//     products: state.products
-//   }
-// }
 
 export default App;

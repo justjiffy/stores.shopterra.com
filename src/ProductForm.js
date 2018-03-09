@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import {
-  getVendor,
-  users,
-} from './services/db'
-
 export class ProductForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: "",
-      img: "",
-      price: "",
+      name: this.props.product ? this.props.product.name : "",
+      img: this.props.product ? this.props.product.images[0].url : "",
+      price: this.props.product ? this.props.product.price   : "",
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -22,7 +17,7 @@ export class ProductForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    return this.props.onSubmit(this.state)
+    return this.props.onSubmit(this.state, this.props.product)
   }
 
   render() {
