@@ -1,5 +1,5 @@
 /**
- * request is responsible for hooking http requests into the `api` redux store.
+ * this file is responsible for hooking http requests into the `api` redux store.
  * it dispatches a loading event followed by a success event or failure event.
  *
  * The advantages this provides over a plain `fetch` within a component are:
@@ -12,6 +12,42 @@
  * 3. Components rendered on different screens can re-use previously fetched http responses
  *    without the need for a special reducer to share the data.
  *
+ *
+ */
+
+export const createLeadKey = 'email.submit'
+export const helloKey      = 'hello'
+
+export const baseUrl = window.location.href.match(/localhost/)
+  ? 'http://localhost:3000'
+  : 'https://apistaging.shopterra.com'
+
+/**
+ * graph is a convenience wrapper around request for making graphql queries.
+ *
+ * @param {string} key  shared key for this query. this allows multiple components to await the same http request.
+ * @param {string} query graphql query
+ * @param {object} variables optional object containing variables
+ *
+ */
+export function graph(key, query, variables = {}) {
+  return request({
+    url: '/graph',
+    method: 'POST',
+    key,
+    body: {
+      query,
+      variables,
+    }
+  })
+}
+
+/**
+ * request provides the interface to fetch, and most `args` are passed through directly.
+ *
+ * it deals with massaging the input (JSON.stringify'ing objects, adding default headers etc)
+ *
+ * and dispatching loading events, response events, and error events to redux.
  *
  * @param  {object} args:               args to passthru to fetch
  * @param  {string} args.url:           url specified as relative path of API base url
@@ -26,15 +62,7 @@
  * @param  {string} [args.fileName]:      filename for uploaded file
  * @param  {string} [args.fileType]:      mime type of uploaded file
  * @return {promise}:                   result of fetch (error is not thrown)
- */
-
-export const createLeadKey = 'email.submit'
-export const helloKey      = 'hello'
-
-export const baseUrl = window.location.href.match(/localhost/)
-  ? 'http://localhost:3000'
-  : 'https://apistaging.shopterra.com'
-
+*/
 export default function request({key, url, force, ...args}) {
   return function(dispatch, getState) {
     const state     = getState()
@@ -62,18 +90,6 @@ export default function request({key, url, force, ...args}) {
       throw err
     })
   }
-}
-
-export function graph(key, query, variables = {}) {
-  return request({
-    url: '/graph',
-    method: 'POST',
-    key,
-    body: {
-      query,
-      variables,
-    }
-  })
 }
 
 //
