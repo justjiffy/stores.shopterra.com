@@ -6,15 +6,30 @@ export default class SignupView extends Component {
     const {props} = this
 
     return (
-      <form className="Signup" onSubmit={(e) => {e.preventDefault(); props.submit()}}>
+      <form className="Signup" onSubmit={(e) => {e.preventDefault(); props.submit(props.email)}}>
         <label>
           E-mail Address
           <input type="email" name="email" value={props.email}
+                 onChange={(e) => props.updateEmail(e.target.value)}
                  autoComplete="email" placeholder="E-mail Address"/>
         </label>
         <button>Submit</button>
 
-        <a className="killme" onClick={props.hello}>Hello World</a>
+        <div className="killme">
+          <a onClick={props.hello}>Hello World</a>
+
+          { props.response &&
+            <div>{JSON.stringify(props.response)}</div>
+          }
+          { props.loading &&
+            <div>Loading...</div>
+          }
+          { props.errorMsg &&
+            <div style={{color: 'indianred'}}>
+              {props.errorMsg}
+            </div>
+          }
+        </div>
       </form>
     )
   }

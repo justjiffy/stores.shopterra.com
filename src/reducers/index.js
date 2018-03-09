@@ -29,7 +29,6 @@ const config = {
   whitelist: [
     // any reducers named here will have their states persisted to disk
     // caution: storing large state trees affects performance significantly!
-    'api',
   ]
 }
 

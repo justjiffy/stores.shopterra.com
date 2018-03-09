@@ -14,9 +14,9 @@
  *
  *
  * @param  {object} args:               args to passthru to fetch
- * @param  {boolean} force:             whether we should do the request even if it's in progress
  * @param  {string} args.url:           url specified as relative path of API base url
  * @param  {string} args.key:           request key for re-use
+ * @param  {boolean} args.force:        whether we should do the request even if it's in progress
  * @param  {string} [args.method=GET]:  http method
  * @param  {object} [args.headers]:     http headers
  * @param  {object|string} [args.body]: json body
@@ -29,15 +29,16 @@
  */
 
 export const createLeadKey = 'email.submit'
+export const helloKey      = 'hello'
 
 export const baseUrl = window.location.href.match(/localhost/)
-  ? 'https://shopterra.ngrok.io'
+  ? 'http://localhost:3000'
   : 'https://apistaging.shopterra.com'
 
-export default function request({key, url, ...args}, force) {
+export default function request({key, url, force, ...args}) {
   return function(dispatch, getState) {
     const state     = getState()
-    const method    = args.method || 'GET'
+    args.method     = args.method || 'GET'
     const isLoading = (state.api[key] || {}).loading
 
     if( isLoading && !force ) {
@@ -49,7 +50,7 @@ export default function request({key, url, ...args}, force) {
     dispatch({type: 'api:loading', key})
 
     const httpRequest = !args.upload ?
-      http(args.url, args) :
+      http(url, args) :
       upload(args)
 
     return httpRequest.then((json) => {
@@ -102,7 +103,7 @@ function http(path, options = {}) {
     if( !q.ok ) {
       var err = new Error(json.message || json.error || JSON.stringify(json))
       err.name = 'ApiError'
-      err.statusCode = statusCode
+      err.statusCode = q.statusCode
       throw err
     }
     return json
@@ -138,7 +139,7 @@ function upload({url, fieldName, file, ...params}) {
   }).then(payload => {
     return payload
   }).catch((err) => {
-    log(err.message || JSON.stringify(err))
+    console.error(err.message || JSON.stringify(err))
     throw err
   })
 }
