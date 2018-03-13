@@ -16,7 +16,8 @@
  */
 
 export const createLeadKey = 'email.submit'
-export const helloKey      = 'hello'
+export const helloKey      = 'unicorn'
+export const inputKey      = 'input'
 
 export const baseUrl = window.location.href.match(/localhost/)
   ? 'http://localhost:3000'

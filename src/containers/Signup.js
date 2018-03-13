@@ -3,7 +3,8 @@ import {connect}          from 'react-redux'
 import SignupView       from '../components/SignupView'
 import {
   graph,
-  helloKey
+  helloKey,
+  inputKey
 } from '../actions/request'
 
 class Signup extends Component {
@@ -46,13 +47,17 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     submit: (email) => {
-      alert('Nope')
+      return dispatch(graph('subscriber', `
+        mutation createSubscriber($input: SubscriberInput!) {
+          ok:addSubscriber(input: $input)
+        }
+      `, {input: {email}}
+      ))
     },
-
     hello: () => {
       return dispatch(graph(helloKey, `
         {
-          hello {
+          hello1 {
             hi
           }
         }
