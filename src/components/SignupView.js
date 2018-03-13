@@ -5,8 +5,6 @@ export default class SignupView extends Component {
   render() {
     const {props} = this
 
-    console.log(props);
-
     return (
       <div>
       { props.submitted === true ?
