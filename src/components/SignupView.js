@@ -7,10 +7,10 @@ export default class SignupView extends Component {
 
     return (
       <div>
-      { props.submitted === true ?
+      { props.submitMsg ?
         <h1>Thanks!</h1>
         :
-        <form className="Signup" onSubmit={(e) => {e.preventDefault(); props.submit(props.email); props.updateSubmitted(true) }}>
+        <form className="Signup" onSubmit={(e) => {e.preventDefault(); props.submit(props.email) }}>
           <label>
             E-mail Address
             <input type="email" name="email" value={props.email}
