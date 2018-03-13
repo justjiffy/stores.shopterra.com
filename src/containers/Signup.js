@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import {connect}          from 'react-redux'
-import SignupView       from '../components/SignupView'
+import SignupView         from '../components/SignupView'
 import {
   graph,
+  subscriberKey,
   helloKey
 } from '../actions/request'
 
@@ -31,14 +32,17 @@ class Signup extends Component {
 }
 
 function mapStateToProps(state) {
-  const apiCall = state.api[helloKey] || {}
+  const apiCall = state.api[subscriberKey] || {}
 
   const errorMsg = !apiCall.error ? null :
     apiCall.error.message || JSON.stringify(apiCall.error)
 
+  const submitMsg = !apiCall.body ? null : apiCall.body.ok;
+
   return {
     loading:  apiCall.loading,
     response: apiCall.body,
+    submitMsg,
     errorMsg,
   }
 }
@@ -46,9 +50,13 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     submit: (email) => {
-      alert('Nope')
+      return dispatch(graph(subscriberKey, `
+        mutation createSubscriber($input: SubscriberInput!) {
+          ok:addSubscriber(input: $input)
+        }
+      `, {input: {email}}
+      ))
     },
-
     hello: () => {
       return dispatch(graph(helloKey, `
         {

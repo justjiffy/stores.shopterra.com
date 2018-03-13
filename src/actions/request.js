@@ -16,6 +16,7 @@
  */
 
 export const createLeadKey = 'email.submit'
+export const subscriberKey = 'subscribe'
 export const helloKey      = 'hello'
 
 export const baseUrl = window.location.href.match(/localhost/)
