@@ -9,7 +9,9 @@ class Stage extends Component {
     return (
       <div>
         <Header />
-        <Signup />
+        <main>
+          <Signup />
+        </main>
         <Footer />
       </div>
     )
