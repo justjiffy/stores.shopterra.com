@@ -9,7 +9,7 @@ import {
 
 class Signup extends Component {
   state = {
-    email: ''
+    email: 'E-mail Address'
   }
 
   constructor(props) {

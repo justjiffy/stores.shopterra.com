@@ -2,17 +2,79 @@
 a { color: cornflowerblue; text-decoration: underline; cursor: pointer; }
 body { margin: 0; padding: 0; font-family: sans-serif;}
 
+$teal: #3AAAB2;
+$borderColor: #CCCCCC;
+$lightGrayText: #D8D8D8;
+$lightGrayBg: #F1F1F1;
+
+$padding: 10px;
+
+@mixin section() {
+  margin: 0 auto;
+  background: white;
+  border: 1px solid $borderColor;
+  margin: 0 auto;
+}
+
 .App {
-  text-align: center;
-}
-.Header {
-  padding: 3.5%;
-}
-.logo {
-  width: 42.5%;
-}
-main {
   background-image: url("../images/bg_mobile.jpg");
   background-repeat: no-repeat;
+  padding: calc(#{$padding} * 2) $padding;
   background-size: 100% 100%;
+  background-position-y: 61px;
+  text-align: center;
+  section {
+    @include section;
+  }
+}
+
+h1 {
+  color: $teal;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+.Header {
+  .logo {
+    width: 137px;
+  }
+}
+
+.Footer {
+  height: 120px;
+  background-color: $lightGrayBg;
+  padding: calc(#{$padding} * 1.5);
+
+  div {
+    float: left;
+    text-align: left;
+    font-size: 12px;
+
+    p, a {
+      color: $lightGrayText;
+      text-decoration: none;
+    }
+  }
+  .logo {
+    width: 80px;
+  }
+  .social {
+    float: right;
+    width: 27px;
+    margin-left: $padding;
+  }
+}
+
+.About {
+  .icons {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  .icons img {
+    width: 53px;
+    display: inline-block;
+  }
 }
