@@ -7,6 +7,7 @@ import {
   helloKey
 } from '../actions/request'
 
+
 class Signup extends Component {
   state = {
     email: 'E-mail Address'

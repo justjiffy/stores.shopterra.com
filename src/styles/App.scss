@@ -6,8 +6,12 @@ $teal: #3AAAB2;
 $borderColor: #CCCCCC;
 $lightGrayText: #D8D8D8;
 $lightGrayBg: #F1F1F1;
+$darkPink: #C62786;
+$green: #9DCF67;
 
 $padding: 10px;
+
+$aboutIcon: 53px;
 
 @mixin section() {
   margin: 0 auto;
@@ -71,10 +75,61 @@ h2 {
   .icons {
     display: flex;
     flex-direction: column;
-    text-align: left;
+  }
+  .icons div {
+    display: flex;
+    margin: 0 calc(#{$padding} * 3);
   }
   .icons img {
-    width: 53px;
-    display: inline-block;
+    width: $aboutIcon;
+    height: $aboutIcon;
+    margin: 0 $padding $padding 0;
+  }
+  .icons span {
+    line-height: $aboutIcon;
+    vertical-align: middle;
+  }
+  .good {
+    padding: calc(#{$padding} * 3) 0;
+    margin: 0 $padding;
+
+    .rating {
+      width: 150px;
+    }
+    ul {
+      padding: $padding;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      list-style-image: url("../images/about/icon_check.svg");
+      list-style-position: inside;
+    }
+    li {
+      padding-bottom: $padding;
+      width: 50%;
+    }
+  }
+  .pink {
+    color: $darkPink;
+  }
+  .green * {
+    color: $green;
+    fill: $green;
+  }
+  .rating-list {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.Example {
+  .versus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      margin: 0 calc(#{$padding} * 2);
+    }
   }
 }
