@@ -79,15 +79,12 @@ h2 {
   .icons div {
     display: flex;
     margin: 0 calc(#{$padding} * 3);
+    align-items: center;
   }
   .icons img {
     width: $aboutIcon;
     height: $aboutIcon;
     margin: 0 $padding $padding 0;
-  }
-  .icons span {
-    line-height: $aboutIcon;
-    vertical-align: middle;
   }
   .good {
     padding: calc(#{$padding} * 3) 0;
@@ -123,10 +120,12 @@ h2 {
 }
 
 .Example {
+  padding: calc(#{$padding} * 3);
+
   .versus {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 
     span {
       margin: 0 calc(#{$padding} * 2);

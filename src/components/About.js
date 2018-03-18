@@ -43,7 +43,11 @@ class Example extends Component {
           <span>VS.</span>
           <img src={images["example_right.png"]} alt="example" />
         </div>
-        <RatingSystem />
+        <div className="versus">
+          <RatingSystem />
+          <span></span>
+          <RatingSystem />
+        </div>
       </div>
     )
   }
