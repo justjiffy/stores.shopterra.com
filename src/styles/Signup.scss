@@ -1,6 +1,10 @@
 @import "App.scss";
 
 .Signup {
+  @include desktop() {
+    max-width: 515px;
+    margin: 0 auto;
+  }
   h2 {
     font-size: 20px;
     margin: $padding 0;
@@ -33,9 +37,5 @@
       width: 30%;
       margin: calc(#{$padding} / 2 ) $padding;
     }
-  }
-  @include desktop() {
-    max-width: 515px;
-    margin: 0 auto;
   }
 }

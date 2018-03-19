@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import logo                 from '../images/shopterra_logo.png'
-import '../styles/App.css'
+import '../styles/Header.css'
 
 export default class Header extends Component {
   render() {

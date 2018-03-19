@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../styles/App.css'
+import '../styles/About.css'
 
 import RatingSystem       from './shared/RatingSystem'
 import Signup             from '../containers/Signup'
@@ -133,8 +133,10 @@ export default class About extends Component {
         <Signup pitch="Get notified when we launch" />
         <section className="About">
           <Intro />
-          <GoodFor image={images["icon_heart_series.svg"]} who="You" color="pink" />
-          <GoodFor image={images["icon_leaf_series.svg"]} who="Earth" color="green" />
+          <div className="GooodContainer">
+            <GoodFor image={images["icon_heart_series.svg"]} who="You" color="pink" />
+            <GoodFor image={images["icon_leaf_series.svg"]} who="Earth" color="green" />
+          </div>    
           <Example />
         </section>
         <Why />
