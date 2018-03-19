@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
+import Signup               from '../containers/Signup'
 import '../styles/About.css'
-
-import RatingSystem       from './shared/RatingSystem'
-import Signup             from '../containers/Signup'
 
 function importAll(r) {
   let images = {};
@@ -64,24 +62,21 @@ class Example extends Component {
   render() {
     return (
       <div className="Example">
-        <p>Example Ratings</p>
-        <div className="versus">
-          <img src={images["example_left.png"]} alt="example" />
-          <p>vs.</p>
-          <img src={images["example_right.png"]} alt="example" />
+        <div class="heading">
+          <p className="mobile">Example Ratings</p>
+          <p className="desktop">{"You’ll see this rating on all products sold on Shopterra."}</p>
         </div>
-        <div className="versus">
-          <RatingSystem system="Leaf" />
-          <RatingSystem system="Leaf" />
+        <div class="content-container">
+          <div class="content">
+            <img src={images["example_product.jpg"]} alt="example" />
+            <hr className="mobile"></hr>
+          </div>
+          <div class="content">
+            <p className="patent">Blurb about the patent pending system, and your cooperation with other agencies as well as Eshe’s credentials.</p>
+            <img className="uspto" src={images["agency_uspto.png"]} alt="uspto" />
+            <img className="fsa" src={images["agency_fsa.png"]} alt="fsa" />
+          </div>
         </div>
-        <div className="versus">
-          <RatingSystem system="Heart" />
-          <RatingSystem system="Heart" />
-        </div>
-        <hr></hr>
-        <p className="patent">Blurb about the patent pending system, and your cooperation with other agencies as well as Eshe’s credentials.</p>
-        <img src={images["agency_uspto.png"]} alt="uspto" />
-        <img src={images["agency_fsa.png"]} alt="fsa" />
       </div>
     )
   }
@@ -93,7 +88,8 @@ class Why extends Component {
       <div className="Why">
         <h1>Why Sell On Shopterra?</h1>
         <h3>Grow your customer base.</h3>
-        <p>A small paragraph outlining the ethos behind the company. A high level description of the problem you want to solve for customers.</p>
+        <p className="mobile">A small paragraph outlining the ethos behind the company. A high level description of the problem you want to solve for customers.</p>
+        <p className="desktop">Shopterra offers one platform for natural and environmentally conscious consumers to purchase products with confidence. Our proprietary rating system ranks active ingredients in each and every product we sell and tells you, the consumer, how it impacts your health and the environment.</p>
       </div>
     )
   }
@@ -106,20 +102,16 @@ class Categories extends Component {
         <h1>Categories we'll specialize in first</h1>
         <div className="grid">
           <div>
-            <img src={images["category_personalcare.png"]}  alt="category"/>
-            <p>Personal Care</p>
+            <img src={images["category_personalcare.jpg"]}  alt="category"/>
           </div>
           <div>
-            <img src={images["category_nutriment.png"]} alt="category"/>
-            <p>Nutriments</p>
+            <img src={images["category_nutriments.jpg"]} alt="category"/>
           </div>
           <div>
             <img src={images["category_homecare.png"]} alt="category"/>
-            <p>Home Care</p>
           </div>
           <div>
-            <img src={images["category_petcare.png"]} alt="category"/>
-            <p>Pet Care</p>
+            <img src={images["category_petcare.jpg"]} alt="category"/>
           </div>
         </div>
       </div>

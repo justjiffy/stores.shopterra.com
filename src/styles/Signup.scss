@@ -12,6 +12,7 @@
   form {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
     * {
       font-size: 16px;
       padding: $padding;
@@ -24,10 +25,16 @@
   }
   input {
     text-align: center;
+    border: 1px solid $lightGrayText;
     color: $formPlaceholder;
     @include desktop() {
       width: 60%;
       margin: calc(#{$padding} / 2 ) $padding;
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid $teal;
+      background: white;
     }
   }
   button {

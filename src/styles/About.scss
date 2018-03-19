@@ -20,9 +20,7 @@
   .green * { color: $green; fill: $green; }
 
   .rating-list { display: flex; justify-content: center; }
-  .signup { background-image: url("../images/bg_login.png"); background-size: cover; padding: 40px 20px;
-    @include desktop() { background-image: url("../images/bg_login_desktop.png"); }
-  }
+  .signup { background-image: url("../images/background_3.jpg"); background-size: cover; padding: 40px 20px; }
 }
 
 .GooodContainer {
@@ -58,39 +56,61 @@
   p {
     margin: $padding;
   }
-  .versus {
+  img {
+    width: 100%;
+  }
+  .content-container {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    flex-direction: column;
 
-    .left {
-      display: none;
+    @include desktop() {
+      flex-direction: row;
     }
   }
-  .patent {
+  .content {
+    @include desktop() {
+      text-align: left;
+      margin: 10px 20px 40px 30px
+    }
+
+    p {
     color: #959595;
     font-size: 13px;
     line-height: 20px;
+    }
+    .uspto {
+      width: 60px;
+      margin-bottom: 8px;
+      @include desktop() {
+        margin-left: 12px;
+      }
+    }
+    .fsa {
+      width: 84px;
+    }
   }
 }
 
 .Why {
-  background-image: url("../images/about/bg_why.png");
+  background-image: url("../images/background_2.jpg");
+  background-position: 50% 60%;
   background-size: cover;
   padding: calc(#{$padding} * 4);
 
+  h3 {
+    margin: $padding 0 calc(#{$padding} * 3) 0;
+  }
   p {
+    font-size: 18px;
     background-color: white;
     padding: calc(#{$padding} * 2);
+    line-height: 30px;
     @include desktop() {
       max-width: 715px;
       margin: 0 auto;
-      padding: calc(#{$padding} * 2) calc(#{$padding} * 4);
+      padding: calc(#{$padding} * 3) calc(#{$padding} * 6);
     }
-  }
-  @include desktop() {
-    background-image: url("../images/about/bg_why_desktop.jpg");
-    background-position: bottom;
   }
 }
 
@@ -104,6 +124,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: calc(#{$padding} * 3);
 
     div {
       position: relative;

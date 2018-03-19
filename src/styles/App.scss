@@ -24,12 +24,24 @@ $sans: 'Montserrat', sans-serif;
   @media only screen and (min-width: 769px) { @content }
 }
 
+.desktop { display: none;
+  @include desktop() { display: block }
+}
+.mobile { display: block;
+  @include desktop() { display: none; }
+}
+
 .App {
-  background-image: url("../images/bg_mobile.jpg");
+  background-image: url("../images/background_1.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
-  background-position-y: 61px;
+  background-size: 300%;
+  background-position-x: 50%;
+  background-position-y: 70px;
   text-align: center;
+  @include desktop() {
+    background-size: 100%;
+    background-position-y: 61px;
+  }
   section {
     background: white;
     border: 1px solid $borderColor;
@@ -39,9 +51,6 @@ $sans: 'Montserrat', sans-serif;
       max-width: 715px;
       margin: $padding auto;
     }
-  }
-  @include desktop() {
-    background-image: url("../images/bg_desktop.jpg");
   }
 }
 
@@ -63,6 +72,7 @@ hr {
   margin: calc(#{$padding} * 2);
   color: $lightGrayText;
 }
+
 .Footer {
   height: 120px;
   background-color: $lightGrayBg;
