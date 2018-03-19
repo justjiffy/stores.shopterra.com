@@ -106,19 +106,19 @@ class Categories extends Component {
         <h1>Categories we'll specialize in first</h1>
         <div className="grid">
           <div>
-            <img src={images["category_personalcare.png"]} />
+            <img src={images["category_personalcare.png"]}  alt="category"/>
             <p>Personal Care</p>
           </div>
           <div>
-            <img src={images["category_nutriment.png"]} />
+            <img src={images["category_nutriment.png"]} alt="category"/>
             <p>Nutriments</p>
           </div>
           <div>
-            <img src={images["category_homecare.png"]} />
+            <img src={images["category_homecare.png"]} alt="category"/>
             <p>Home Care</p>
           </div>
           <div>
-            <img src={images["category_petcare.png"]} />
+            <img src={images["category_petcare.png"]} alt="category"/>
             <p>Pet Care</p>
           </div>
         </div>
@@ -136,7 +136,7 @@ export default class About extends Component {
           <div className="GooodContainer">
             <GoodFor image={images["icon_heart_series.svg"]} who="You" color="pink" />
             <GoodFor image={images["icon_leaf_series.svg"]} who="Earth" color="green" />
-          </div>    
+          </div>
           <Example />
         </section>
         <Why />
