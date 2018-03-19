@@ -1,11 +1,5 @@
 @import "App.scss";
 
-@mixin formElement() {
-  padding: $padding;
-  border-radius: 36px;
-  margin: calc(#{$padding} / 2) calc(#{$padding} * 2);
-}
-
 .Signup {
   h2 {
     font-size: 20px;
@@ -16,15 +10,32 @@
     flex-direction: column;
     * {
       font-size: 16px;
-      @include formElement;
+      padding: $padding;
+      border-radius: 36px;
+      margin: calc(#{$padding} / 2) calc(#{$padding} * 2);
+    }
+    @include desktop() {
+      flex-direction: row;
     }
   }
   input {
     text-align: center;
     color: $formPlaceholder;
+    @include desktop() {
+      width: 60%;
+      margin: calc(#{$padding} / 2 ) $padding;
+    }
   }
   button {
     background-color: $teal;
     color: white;
+    @include desktop() {
+      width: 30%;
+      margin: calc(#{$padding} / 2 ) $padding;
+    }
+  }
+  @include desktop() {
+    max-width: 515px;
+    margin: 0 auto;
   }
 }
