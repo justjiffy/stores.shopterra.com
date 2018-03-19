@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+
 * { box-sizing: border-box; }
 body, h1, h2, h3, p { margin: 0; padding: 0;}
-
 
 $primaryText: #454545;
 $secondaryText: #616575;
@@ -15,8 +17,8 @@ $green: #9DCF67;
 
 $padding: 12px;
 $aboutIcon: 53px;
-$serif: serif;
-$sans: sans-serif;
+$serif: 'PT Serif', serif;
+$sans: 'Montserrat', sans-serif;
 
 @mixin desktop() {
   @media only screen and (min-width: 769px) { @content }
@@ -66,10 +68,8 @@ hr {
   background-color: $lightGrayBg;
   padding: calc(#{$padding} * 1.5);
   @include desktop() {
-    max-width: 750px;
-    margin: 0 auto;
+    padding: $padding 20%;
   }
-
   div {
     float: left;
     text-align: left;
