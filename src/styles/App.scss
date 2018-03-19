@@ -46,6 +46,7 @@ $sans: sans-serif;
 }
 
 h1 {
+  color: $primaryText;
   font-family: $serif;
 }
 
@@ -155,6 +156,11 @@ hr {
     display: flex;
     justify-content: center;
   }
+  .signup {
+    background-image: url("../images/bg_login.png");
+    background-size: cover;
+    padding: 40px 20px;
+  }
 }
 
 .GoodFor {
@@ -213,6 +219,7 @@ hr {
 }
 
 .Categories {
+  padding: 40px 20px 30px 20px;
   .grid {
     display: flex;
     flex-wrap: wrap;
@@ -220,11 +227,18 @@ hr {
 
     div {
       position: relative;
+      width: 50%;
+      padding: 5px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
     p {
       font-family: $serif;
+      color: $secondaryText;
       position: absolute;
-      top: calc(#{$padding} * 1.5);
+      top: $padding;
       width: 100%;
     }
   }

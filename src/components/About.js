@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import '../styles/App.css'
 
-import RatingSystem from './shared/RatingSystem'
+import RatingSystem       from './shared/RatingSystem'
+import Signup             from '../containers/Signup'
 
 function importAll(r) {
   let images = {};
@@ -109,15 +110,15 @@ class Categories extends Component {
             <p>Personal Care</p>
           </div>
           <div>
-            <img src={images["category_personalcare.png"]} />
+            <img src={images["category_nutriment.png"]} />
             <p>Nutriments</p>
           </div>
           <div>
-            <img src={images["category_personalcare.png"]} />
+            <img src={images["category_homecare.png"]} />
             <p>Home Care</p>
           </div>
           <div>
-            <img src={images["category_personalcare.png"]} />
+            <img src={images["category_petcare.png"]} />
             <p>Pet Care</p>
           </div>
         </div>
@@ -128,7 +129,8 @@ class Categories extends Component {
 export default class About extends Component {
   render() {
     return (
-      <div>
+      <div className="About">
+        <Signup pitch="Get notified when we launch" />
         <section className="About">
           <Intro />
           <GoodFor image={images["icon_heart_series.svg"]} who="You" color="pink" />
@@ -137,6 +139,9 @@ export default class About extends Component {
         </section>
         <Why />
         <Categories />
+        <div className="signup">
+          <Signup pitch="Be the first to sell on Shopterra" />
+        </div>
       </div>
     )
   }
