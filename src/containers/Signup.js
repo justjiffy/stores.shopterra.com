@@ -10,7 +10,7 @@ import {
 
 class Signup extends Component {
   state = {
-    email: 'E-mail Address'
+    email: 'enter your email'
   }
 
   constructor(props) {

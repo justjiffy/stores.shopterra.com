@@ -5,26 +5,39 @@ body { margin: 0; padding: 0; font-family: sans-serif;}
 $teal: #3AAAB2;
 $borderColor: #CCCCCC;
 $lightGrayText: #D8D8D8;
+
+$primaryText: #454545;
+$secondaryText: #616575;
+
+$formPlaceholder: #A4A4A4;
+
 $lightGrayBg: #F1F1F1;
 $darkPink: #C62786;
 $green: #9DCF67;
+$iconOff: #C1C1C1;
 
-$padding: 10px;
+$padding: 12px;
 
 $aboutIcon: 53px;
 
+$serif: serif;
+$sans: sans-serif;
+
 @mixin section() {
-  margin: 0 auto;
   background: white;
   border: 1px solid $borderColor;
-  margin: 0 auto;
+  margin: $padding;
+  padding: $padding;
+}
+
+* {
+  margin: 0;
 }
 
 .App {
   background-image: url("../images/bg_mobile.jpg");
   background-repeat: no-repeat;
-  padding: calc(#{$padding} * 2) $padding;
-  background-size: 100% 100%;
+  background-size: 100%;
   background-position-y: 61px;
   text-align: center;
   section {
@@ -33,14 +46,38 @@ $aboutIcon: 53px;
 }
 
 h1 {
-  color: $teal;
+  font-family: $serif;
 }
 
 h2 {
+  color: $primaryText;
   font-size: 18px;
+  font-family: $serif;
 }
-
+h3 {
+  font-size: 16px;
+  font-family: $serif;
+}
+hr {
+  margin: calc(#{$padding} * 2);
+  color: $lightGrayText;
+}
 .Header {
+  padding: calc(#{$padding} * 2);
+
+  h1 {
+    color: $teal;
+    margin-top: calc(#{$padding} * 5);
+  }
+  h2 {
+    margin: calc(#{$padding} * 2)
+  }
+  h3 {
+    font-size: 18px;
+    line-height: 26px;
+    font-family: $sans;
+    color: $secondaryText;
+  }
   .logo {
     width: 137px;
   }
@@ -72,11 +109,27 @@ h2 {
 }
 
 .Ratings {
+  svg {
+    padding: 1px;
+  }
   svg path {
-    fill: black;
+    fill: $iconOff;
   }
 }
 .About {
+  h2, h3, span {
+    color: $primaryText;
+  }
+  h2 {
+    padding: $padding 0;
+  }
+  h3 {
+    margin-top: calc(#{$padding} * 3);
+    margin-bottom: calc(#{$padding} * 2);
+  }
+  p {
+    color: $secondaryText;
+  }
   .icons {
     display: flex;
     flex-direction: column;
@@ -91,26 +144,6 @@ h2 {
     height: $aboutIcon;
     margin: 0 $padding $padding 0;
   }
-  .good {
-    padding: calc(#{$padding} * 3) 0;
-    margin: 0 $padding;
-
-    .rating {
-      width: 150px;
-    }
-    ul {
-      padding: $padding;
-      margin: 0;
-      display: flex;
-      flex-wrap: wrap;
-      list-style-image: url("../images/about/icon_check.svg");
-      list-style-position: inside;
-    }
-    li {
-      padding-bottom: $padding;
-      width: 50%;
-    }
-  }
   .pink {
     color: $darkPink;
   }
@@ -124,16 +157,75 @@ h2 {
   }
 }
 
-.Example {
-  padding: calc(#{$padding} * 3);
+.GoodFor {
+  padding: calc(#{$padding} * 3) 0;
+  border: 1px solid $borderColor;
 
+  .rating {
+    width: 150px;
+  }
+  ul {
+    padding: $padding;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-image: url("../images/about/icon_check.svg");
+    list-style-position: inside;
+  }
+  li {
+    padding-bottom: $padding;
+    color: $secondaryText;
+    width: 50%;
+  }
+}
+
+.Example {
+  padding-top: calc(#{$padding} * 2);
+
+  p {
+    margin: $padding;
+  }
   .versus {
     display: flex;
     align-items: center;
     justify-content: space-around;
 
-    span {
-      margin: 0 calc(#{$padding} * 2);
+    .left {
+      display: none;
+    }
+  }
+  .patent {
+    color: #959595;
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+
+.Why {
+  background-image: url("../images/about/bg_why.png");
+  background-size: cover;
+  padding: calc(#{$padding} * 4);
+
+  p {
+    background-color: white;
+    padding: calc(#{$padding} * 2);
+  }
+}
+
+.Categories {
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    div {
+      position: relative;
+    }
+    p {
+      font-family: $serif;
+      position: absolute;
+      top: calc(#{$padding} * 1.5);
+      width: 100%;
     }
   }
 }

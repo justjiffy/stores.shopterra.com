@@ -8,8 +8,8 @@ export default class Header extends Component {
       <div className="Header">
         <img className="logo" src={logo} alt="shopterra_logo" />
         <h1>A Marketplace For Natural Products.</h1>
-        <p>Let us help you tell your story.</p>
-        <p>Sell your product to customers that care about how it impacts them and the environment.</p>
+        <h2>Let us help you tell your story.</h2>
+        <h3>Sell your product to customers that care about how it impacts them and the environment.</h3>
       </div>
     )
   }

@@ -1,23 +1,30 @@
 @import "App.scss";
 
 @mixin formElement() {
-  height: 36px;
+  padding: $padding;
   border-radius: 36px;
   margin: calc(#{$padding} / 2) calc(#{$padding} * 2);
 }
 
 .Signup {
+  h2 {
+    font-size: 20px;
+    margin: $padding 0;
+  }
   form {
     display: flex;
     flex-direction: column;
+    * {
+      font-size: 16px;
+      @include formElement;
+    }
   }
   input {
     text-align: center;
-    @include formElement;
+    color: $formPlaceholder;
   }
   button {
     background-color: $teal;
     color: white;
-    @include formElement;
   }
 }
