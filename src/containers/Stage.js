@@ -1,11 +1,17 @@
 import React, {Component} from 'react'
 import {connect}          from 'react-redux'
-import Signup             from '../containers/Signup'
+import Header             from '../containers/Header'
+import Footer             from '../containers/Footer'
+import About              from '../containers/About'
 
 class Stage extends Component {
   render() {
     return (
-      <Signup />
+      <div>
+        <Header />
+        <About />
+        <Footer />
+      </div>
     )
   }
 }

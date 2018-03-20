@@ -1,25 +1,48 @@
+@import "variables.scss";
+
 .Signup {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  label {
-    display: block;
+  @include desktop() {
+    max-width: 515px;
+    margin: 0 auto;
   }
-
-  input[type="email"] {
-    display: block;
-    margin-top: 1em;
+  h2 {
+    font-size: 20px;
+    margin: $padding 0;
   }
-
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    * {
+      font-size: 16px;
+      padding: $padding;
+      border-radius: 36px;
+      margin: calc(#{$padding} / 2) calc(#{$padding} * 2);
+    }
+    @include desktop() {
+      flex-direction: row;
+    }
+  }
+  input {
+    text-align: center;
+    border: 1px solid $lightGrayText;
+    color: $formPlaceholder;
+    @include desktop() {
+      width: 60%;
+      margin: calc(#{$padding} / 2 ) $padding;
+    }
+    &:focus {
+      outline: none;
+      border: 1px solid $teal;
+      background: white;
+    }
+  }
   button {
-    margin-top: 2em;
-  }
-
-  .killme {
-    margin-top: 2em;
+    background-color: $teal;
+    color: white;
+    @include desktop() {
+      width: 30%;
+      margin: calc(#{$padding} / 2 ) $padding;
+    }
   }
 }

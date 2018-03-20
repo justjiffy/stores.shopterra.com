@@ -1,44 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+@import "variables.scss";
+
 * { box-sizing: border-box; }
-a { color: cornflowerblue; text-decoration: underline; cursor: pointer; }
-body { margin: 0; padding: 0; font-family: sans-serif;}
+body, h1, h2, h3, p { margin: 0; padding: 0;}
+
+.desktop { display: none;
+  @include desktop() { display: block }
+}
+.mobile { display: block;
+  @include desktop() { display: none; }
+}
 
 .App {
+  background-image: url("../images/background_1.jpg");
+  background-repeat: no-repeat;
+  background-size: 300%;
+  background-position-x: 50%;
+  background-position-y: 70px;
   text-align: center;
-}
-
-.logo {
-  width: 150px;
-}
-
-.App-header {
-  height: 150px;
-  padding: 20px;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-.product-list {
-  padding: 3em 0;
-}
-
-form {
-  display: inline-block;
-  width: 300px;
-
-  label {
-    display: block;
-    margin-top: 1em;
+  @include desktop() {
+    background-size: 100%;
+    background-position-y: 61px;
   }
-  input {
-    margin-left: 1em;
+  section {
+    background: white;
+    border: 1px solid $borderColor;
+    margin: $padding;
+    padding: $padding;
+    @include desktop() {
+      max-width: 715px;
+      margin: $padding auto;
+    }
   }
-  button {
-    margin-top: 1em
+}
+
+h1 {
+  color: $primaryText;
+  font-family: $serif;
+}
+
+h2 {
+  color: $primaryText;
+  font-size: 18px;
+  font-family: $serif;
+}
+h3 {
+  font-size: 16px;
+  font-family: $serif;
+}
+hr {
+  margin: calc(#{$padding} * 2);
+  color: $lightGrayText;
+}
+
+.Footer {
+  height: 120px;
+  background-color: $lightGrayBg;
+  padding: calc(#{$padding} * 1.5);
+  @include desktop() {
+    padding: $padding 20%;
+  }
+  div {
+    float: left;
+    text-align: left;
+    font-size: 12px;
+
+    p, a {
+      color: $lightGrayText;
+      text-decoration: none;
+    }
+  }
+  .logo {
+    width: 80px;
+  }
+  .social {
+    float: right;
+    width: 27px;
+    margin-left: $padding;
   }
 }

@@ -1,0 +1,21 @@
+
+<svg width="15px" height="10px" viewBox="0 0 15 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 0 15 0 15 11 0 11"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mobile-Vendor-Landing-Page" transform="translate(-46.000000, -964.000000)">
+            <g id="Group" transform="translate(46.000000, 958.000000)">
+                <g id="Page-1" transform="translate(0.000000, 6.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M14.8478981,-0.841206207 C14.6448068,-1.05266063 14.315228,-1.05293092 14.1117897,-0.842017067 L4.89729047,8.70892974 L0.888210339,4.55353945 C0.684685237,4.3426256 0.35510644,4.34289589 0.152101863,4.55435031 C-0.050989468,4.76553445 -0.0506424516,5.10789782 0.152795896,5.31881167 L4.51609298,9.84143171 C4.61776878,9.94675349 4.7507628,9.99936933 4.88384358,9.99936933 C4.88722699,9.99936933 4.89052365,9.99846837 4.89390706,9.99846837 C4.89928581,9.99855847 4.90466457,10 4.91013007,10 C5.0431241,10 5.17620487,9.94738416 5.27779392,9.84206237 L14.8472041,-0.0767448531 C15.0506425,-0.287568609 15.0509895,-0.629931973 14.8478981,-0.841206207" id="Fill-1" fill="#707070" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

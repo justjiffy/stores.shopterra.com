@@ -1,0 +1,10 @@
+@import "variables.scss";
+
+.Ratings {
+  svg {
+    padding: 1px;
+  }
+  svg path {
+    fill: $iconOff;
+  }
+}
