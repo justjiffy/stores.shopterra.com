@@ -4,6 +4,29 @@ import '../styles/About.css'
 
 const images = importAll(require.context('../images/about', false, /\.(png|jpe?g|svg)$/));
 
+export default class About extends Component {
+  render() {
+    return (
+      <div className="About">
+        <Signup pitch="Get notified when we launch" />
+        <section className="About">
+          <Intro />
+          <div className="GoodContainer">
+            <GoodFor image={images["icon_heart_series.svg"]} who="You" color="pink" />
+            <GoodFor image={images["icon_leaf_series.svg"]} who="Earth" color="green" />
+          </div>
+          <Example />
+        </section>
+        <Why />
+        <Categories />
+        <div className="signup">
+          <Signup pitch="Be the first to sell on Shopterra" />
+        </div>
+      </div>
+    )
+  }
+}
+
 class Intro extends Component {
   render() {
     return (
@@ -107,28 +130,6 @@ class Categories extends Component {
           <div>
             <img src={images["category_petcare.jpg"]} alt="category"/>
           </div>
-        </div>
-      </div>
-    )
-  }
-}
-export default class About extends Component {
-  render() {
-    return (
-      <div className="About">
-        <Signup pitch="Get notified when we launch" />
-        <section className="About">
-          <Intro />
-          <div className="GoodContainer">
-            <GoodFor image={images["icon_heart_series.svg"]} who="You" color="pink" />
-            <GoodFor image={images["icon_leaf_series.svg"]} who="Earth" color="green" />
-          </div>
-          <Example />
-        </section>
-        <Why />
-        <Categories />
-        <div className="signup">
-          <Signup pitch="Be the first to sell on Shopterra" />
         </div>
       </div>
     )
