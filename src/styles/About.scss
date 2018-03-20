@@ -23,7 +23,7 @@
   .signup { background-image: url("../images/background_3.jpg"); background-size: cover; padding: 40px 20px; }
 }
 
-.GooodContainer {
+.GoodContainer {
   @include desktop() {
     display: flex;
   }

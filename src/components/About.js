@@ -2,12 +2,6 @@ import React, { Component } from 'react'
 import Signup               from '../containers/Signup'
 import '../styles/About.css'
 
-function importAll(r) {
-  let images = {};
-  r.keys().map((item, index) => { return images[item.replace('./', '')] = r(item); });
-  return images;
-}
-
 const images = importAll(require.context('../images/about', false, /\.(png|jpe?g|svg)$/));
 
 class Intro extends Component {
@@ -99,7 +93,7 @@ class Categories extends Component {
   render() {
     return (
       <div className="Categories">
-        <h1>Categories we'll specialize in first</h1>
+        <h1>{`Categories we'll specialize in first`}</h1>
         <div className="grid">
           <div>
             <img src={images["category_personalcare.jpg"]}  alt="category"/>
@@ -125,7 +119,7 @@ export default class About extends Component {
         <Signup pitch="Get notified when we launch" />
         <section className="About">
           <Intro />
-          <div className="GooodContainer">
+          <div className="GoodContainer">
             <GoodFor image={images["icon_heart_series.svg"]} who="You" color="pink" />
             <GoodFor image={images["icon_leaf_series.svg"]} who="Earth" color="green" />
           </div>
@@ -139,4 +133,13 @@ export default class About extends Component {
       </div>
     )
   }
+}
+
+function importAll(r) {
+  let images = {};
+  r.keys().forEach((item, index) => {
+    const key = item.replace('./', '')
+    images[key] = r(item);
+  });
+  return images;
 }
