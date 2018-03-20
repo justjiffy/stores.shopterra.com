@@ -4,7 +4,7 @@ import '../styles/About.css'
 
 const images = importAll(require.context('../images/about', false, /\.(png|jpe?g|svg)$/));
 
-export default class About extends Component {
+export default class AboutView extends Component {
   render() {
     return (
       <div className="About">

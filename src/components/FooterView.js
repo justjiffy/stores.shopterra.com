@@ -4,7 +4,7 @@ import instagram                 from '../images/social_instagram.png'
 import facebook                 from '../images/social_facebook.png'
 import '../styles/App.css'
 
-export default class Footer extends Component {
+export default class FooterView extends Component {
   render() {
     return (
       <div className="Footer">

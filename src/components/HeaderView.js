@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import logo                 from '../images/shopterra_logo.png'
 import '../styles/Header.css'
 
-export default class Header extends Component {
+export default class HeaderView extends Component {
   render() {
     return (
       <div className="Header">
