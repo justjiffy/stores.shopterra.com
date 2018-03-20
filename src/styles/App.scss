@@ -1,28 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=PT+Serif');
+@import "variables.scss";
 
 * { box-sizing: border-box; }
 body, h1, h2, h3, p { margin: 0; padding: 0;}
-
-$primaryText: #454545;
-$secondaryText: #616575;
-$lightGrayText: #D8D8D8;
-$formPlaceholder: #A4A4A4;
-$iconOff: #C1C1C1;
-$borderColor: #CCCCCC;
-$lightGrayBg: #F1F1F1;
-$teal: #3AAAB2;
-$darkPink: #C62786;
-$green: #9DCF67;
-
-$padding: 12px;
-$aboutIcon: 53px;
-$serif: 'PT Serif', serif;
-$sans: 'Montserrat', sans-serif;
-
-@mixin desktop() {
-  @media only screen and (min-width: 769px) { @content }
-}
 
 .desktop { display: none;
   @include desktop() { display: block }
