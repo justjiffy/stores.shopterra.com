@@ -79,16 +79,16 @@ class Example extends Component {
   render() {
     return (
       <div className="Example">
-        <div class="heading">
+        <div className="heading">
           <p className="mobile">Example Ratings</p>
           <p className="desktop">{"You’ll see this rating on all products sold on Shopterra."}</p>
         </div>
-        <div class="content-container">
-          <div class="content">
+        <div className="content-container">
+          <div className="content">
             <img src={images["example_product.jpg"]} alt="example" />
             <hr className="mobile"></hr>
           </div>
-          <div class="content">
+          <div className="content">
             <p className="patent">Blurb about the patent pending system, and your cooperation with other agencies as well as Eshe’s credentials.</p>
             <img className="uspto" src={images["agency_uspto.png"]} alt="uspto" />
             <img className="fsa" src={images["agency_fsa.png"]} alt="fsa" />
