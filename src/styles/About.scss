@@ -13,44 +13,28 @@
   h1 { color: $teal; font-size: 24px; padding: calc(#{$padding}*2) $padding;
     @include desktop() { font-size: 32px; }
   }
-  h2, span { color: $primaryText; }
+  h2 { color: $primaryText; font-size: 23px; line-height: 30px;}
   h3 {
     font-size: 18px;
     line-height: 26px;
     font-family: $sans;
     color: $secondaryText;
-    padding: 0 10%;
+    padding: calc(#{$padding} * 2) 0;
     @include desktop() { padding: 0 20%; }
   }
-  p { color: $secondaryText; }
+  p { color: $secondaryText; padding-top: $padding;}
 
-  .icons { display: flex; flex-direction: column;
-    @include desktop() { flex-direction: row; }
-    div { display: flex; margin: 0 calc(#{$padding} * 3); align-items: center;
-      @include desktop() { flex-direction: column; }}
-    img { width: $aboutIcon; height: $aboutIcon; margin: 0 $padding $padding 0;
-      @include desktop() { display: block; }}
+  .icons { display: flex; flex-direction: row; flex-wrap: wrap; padding: $padding 0;
+    div { width: 50%; }
+    img { display: block; margin: 10px auto; width: 53px; }
     }
 
-  .pink * { color: $darkPink; fill: $darkPink; }
-  .green * { color: $green; fill: $green; }
-
-  .rating-list { display: flex; justify-content: center; }
   .signup { padding: 40px 20px; }
 }
 
-.GoodContainer {
-  @include desktop() {
-    display: flex;
-  }
-}
-.GoodFor {
-  padding: calc(#{$padding} * 3) 0;
-  border: 1px solid $borderColor;
+.Rating {
+  margin-top: calc(#{$padding} * 4);
 
-  .rating {
-    width: 150px;
-  }
   ul {
     padding: $padding;
     margin: 0;
@@ -63,6 +47,14 @@
     padding-bottom: $padding;
     color: $secondaryText;
     width: 50%;
+  }
+}
+
+.GoodFor {
+  .pink { color: $darkPink; fill: $darkPink; }
+  .green { color: $teal; fill: $teal; }
+  @include desktop() {
+    border: 1px solid
   }
 }
 

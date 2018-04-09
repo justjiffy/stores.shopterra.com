@@ -27,7 +27,7 @@ body, h1, h2, h3, p { margin: 0; padding: 0;}
     background: white;
     border: 1px solid $borderColor;
     margin: $padding;
-    padding: $padding;
+    padding: calc(#{$padding}*2);
     @include desktop() {
       max-width: 715px;
       margin: $padding auto;

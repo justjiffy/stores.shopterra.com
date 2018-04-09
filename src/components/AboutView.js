@@ -13,10 +13,7 @@ export default class AboutView extends Component {
         <Signup pitch="Get notified when we launch" type="preLaunch" />
         <section className="About">
           <Intro />
-          <div className="GoodContainer">
-            <GoodFor image={images["icon_heart_series.svg"]} who="You" color="pink" />
-            <GoodFor image={images["icon_leaf_series.svg"]} who="Earth" color="green" />
-          </div>
+          <Rating />
           <Example />
         </section>
         <Why />
@@ -29,37 +26,53 @@ export default class AboutView extends Component {
   }
 }
 
-class Intro extends Component {
+class Rating extends Component {
   render() {
     return (
-      <div>
-    <h2>We want to connect your brand with customers who care that you care.</h2>
-        <div className="icons">
-          <div>
-            <img src={images["icon_presence.png"]} alt="presence" />
-            <span>Have An Online Presence</span>
-          </div>
-          <div>
-            <img src={images["icon_sales.png"]} alt="sales" />
-            <span>Increase Your Sales</span>
-          </div>
-          <div>
-            <img src={images["icon_save.png"]} alt="save" />
-            <span>Save Time & Money</span>
-          </div>
-        </div>
-        <h3>We help shoppers better understand your product and it’s impact.</h3>
+      <div className="Rating">
+        <h2>Shopterra Product Rating System</h2>
+        <p>{"Simple. Transparent. Independent."}</p>
+        <GoodForYou />
       </div>
     )
   }
 }
 
-class GoodFor extends Component {
+class Intro extends Component {
+  render() {
+    return (
+      <div>
+        <h2>We want to connect your brand with customers who care that you care.</h2>
+        <h3>{"We help shoppers understand why your product is better for them and the environment."}</h3>
+        <div className="icons">
+          <div>
+            <img src={images["value1.png"]} alt="share" />
+            <span>Share Your Values</span>
+          </div>
+          <div>
+            <img src={images["value2.png"]} alt="reach" />
+            <span>Reach a Wider Audience</span>
+          </div>
+          <div>
+            <img src={images["value3.png"]} alt="increase" />
+            <span>Increase Your Sales</span>
+          </div>
+          <div>
+            <img src={images["value4.png"]} alt="save" />
+            <span>Save Time & Mone</span>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+class GoodForYou extends Component {
   render() {
     return (
       <div className="GoodFor">
-        <img className="rating" src={this.props.image} alt="rating" />
-        <h2 className={this.props.color}>Good For {this.props.who}</h2>
+        <img className="rating" src={images["icon_you.png"]} alt="rating" />
+        <h2 className="pink">Good For You</h2>
         <p>Some of the factors we consider:</p>
           <ul>
             <li>rating factor</li>
