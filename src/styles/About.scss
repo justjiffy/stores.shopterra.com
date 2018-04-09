@@ -1,11 +1,27 @@
-// trying the look of all styles on one line...
-
 @import "variables.scss";
 
 .About {
-  h2, h3, span { color: $primaryText; }
-  h2 { padding: $padding 0; }
-  h3 { margin-top: calc(#{$padding} * 3); margin-bottom: calc(#{$padding} * 2); }
+  background-image: url("../images/background_1_mobile.png");
+  background-repeat: no-repeat;
+  background-size: 110%;
+  @include desktop() { background-image: url("../images/background_1_desktop.png") }
+
+  .padded {
+    padding: $padding;
+  }
+
+  h1 { color: $teal; font-size: 24px; padding: calc(#{$padding}*2) $padding;
+    @include desktop() { font-size: 32px; }
+  }
+  h2, span { color: $primaryText; }
+  h3 {
+    font-size: 18px;
+    line-height: 26px;
+    font-family: $sans;
+    color: $secondaryText;
+    padding: 0 10%;
+    @include desktop() { padding: 0 20%; }
+  }
   p { color: $secondaryText; }
 
   .icons { display: flex; flex-direction: column;
@@ -20,7 +36,7 @@
   .green * { color: $green; fill: $green; }
 
   .rating-list { display: flex; justify-content: center; }
-  .signup { background-image: url("../images/background_3.jpg"); background-size: cover; padding: 40px 20px; }
+  .signup { padding: 40px 20px; }
 }
 
 .GoodContainer {

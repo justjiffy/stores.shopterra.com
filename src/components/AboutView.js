@@ -8,7 +8,9 @@ export default class AboutView extends Component {
   render() {
     return (
       <div className="About">
-        <Signup pitch="Get notified when we launch" />
+        <h1>{"Natural, sustainable living and peace of mind coming together in harmony"}</h1>
+        <h3>{"Sell your product to customers that care about how it impacts them and the environment."}</h3>
+        <Signup pitch="Get notified when we launch" type="preLaunch" />
         <section className="About">
           <Intro />
           <div className="GoodContainer">
@@ -20,7 +22,7 @@ export default class AboutView extends Component {
         <Why />
         <Categories />
         <div className="signup">
-          <Signup pitch="Be the first to sell on Shopterra" />
+          <Signup pitch="Be the first to sell on Shopterra" type="preLaunch" />
         </div>
       </div>
     )
