@@ -8,6 +8,10 @@
   @include desktop() {
     background-image: url("../images/background_1_desktop.png");
     padding-top: calc(#{$padding} * 4) !important;
+    background-size: 165%;
+  }
+  @include xl() {
+    background-size: 100%;
   }
 
   .margin {
@@ -16,7 +20,7 @@
     }
   }
 
-  h1 { color: $teal; font-size: 24px; line-height: 32px; padding: calc(#{$padding}*3) 10px 0 10px;
+  h1 { color: $teal; font-size: 24px; line-height: 32px; padding: calc(#{$padding}*3) calc(#{$padding}*3) 0 calc(#{$padding}*3);
     @include desktop() { font-size: 30px; line-height: 40px; max-width: 515px; margin: auto;}
   }
   h2 {
