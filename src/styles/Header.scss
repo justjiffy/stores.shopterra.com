@@ -1,12 +1,10 @@
 @import "variables.scss";
 
 .Header {
-  padding: calc(#{$padding} * 2);
-  @include desktop() {
-    max-width: 750px;
-    margin: 0 auto;
-  }
+  padding: calc(#{$padding} * 2) 0 $padding 0;
+  border-bottom: 1px solid $lightGray;
+
   .logo {
-    width: 137px;
+    width: 150px;
   }
 }

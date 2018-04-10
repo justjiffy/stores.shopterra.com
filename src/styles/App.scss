@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,700');
 @import "../../node_modules/shopterra-styles/index.scss";
 @import "variables.scss";
 
 * { box-sizing: border-box; font-family: $sans; }
-body, h1, h2, h3, p { margin: 0; padding: 0;}
-
+html {
+  min-width: 305px;
+}
+body, h1, h2, h3, p { margin: 0; padding: 0; font-weight: 400;}
 .desktop { display: none;
   @include desktop() { display: block }
 }
@@ -50,8 +52,8 @@ h3 {
   font-family: $serif;
 }
 hr {
-  margin: calc(#{$padding} * 2);
-  color: $lightGrayText;
+  margin: calc(#{$padding} * 4) 0;
+  border-color: white;
 }
 
 .Footer {

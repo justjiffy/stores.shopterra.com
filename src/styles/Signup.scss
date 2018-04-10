@@ -1,20 +1,25 @@
 @import "variables.scss";
 
 .Signup {
+  margin-bottom: 20px;
+
   @include desktop() {
     max-width: 515px;
     margin: 0 auto;
   }
-  h2 {
-    font-size: 20px;
-    margin: $padding 0;
+  section {
+    h2 {
+      font-size: 20px !important;
+      margin: $padding 0;
+    }
   }
+  
   form {
     display: flex;
     flex-direction: column;
     * {
-      font-size: 16px;
-      padding: $padding;
+      font-size: 19px;
+      padding: calc(#{$padding} * 1.25);
       border-radius: 36px;
       margin: calc(#{$padding} / 2) 0;
     }
@@ -29,19 +34,26 @@
     @include desktop() {
       width: 60%;
       margin: calc(#{$padding} / 2 ) $padding;
+      text-align: left;
     }
     &:focus {
       outline: none;
       border: 1px solid $teal;
       background: white;
     }
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px white inset;
+    }
   }
   button {
     background-color: $teal;
     color: white;
     @include desktop() {
-      width: 30%;
-      margin: calc(#{$padding} / 2 ) $padding;
+      width: 35%;
     }
+  }
+  .confirmation {
+    color: $primaryText;
+    padding-bottom: 20px;
   }
 }
