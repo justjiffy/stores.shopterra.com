@@ -1,30 +1,10 @@
 @import "variables.scss";
 
 .Header {
-  padding: calc(#{$padding} * 2);
-  @include desktop() {
-    max-width: 750px;
-    margin: 0 auto;
-  }
+  padding: calc(#{$padding} * 2) 0 $padding 0;
+  border-bottom: 1px solid $lightGray;
 
-  h1 {
-    color: $teal;
-    margin-top: calc(#{$padding} * 4);
-  }
-  h2 {
-    margin: calc(#{$padding} * 2)
-  }
-  h3 {
-    font-size: 18px;
-    line-height: 26px;
-    font-family: $sans;
-    color: $secondaryText;
-    padding: 0 10%;
-    @include desktop() {
-      padding: 0 20%;
-    }
-  }
   .logo {
-    width: 137px;
+    width: 150px;
   }
 }

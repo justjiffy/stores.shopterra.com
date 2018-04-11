@@ -1,63 +1,140 @@
-// trying the look of all styles on one line...
-
 @import "variables.scss";
 
 .About {
-  h2, h3, span { color: $primaryText; }
-  h2 { padding: $padding 0; }
-  h3 { margin-top: calc(#{$padding} * 3); margin-bottom: calc(#{$padding} * 2); }
-  p { color: $secondaryText; }
+  background-image: url("../images/background_1_mobile.png");
+  background-repeat: no-repeat;
+  background-size: 110%;
+  margin-bottom: calc(#{$padding}*2) !important;
+  @include desktop() {
+    background-image: url("../images/background_1_desktop.png");
+    padding-top: calc(#{$padding} * 4) !important;
+    background-size: 165%;
+  }
+  @include xl() {
+    background-size: 100%;
+  }
 
-  .icons { display: flex; flex-direction: column;
-    @include desktop() { flex-direction: row; }
-    div { display: flex; margin: 0 calc(#{$padding} * 3); align-items: center;
-      @include desktop() { flex-direction: column; }}
-    img { width: $aboutIcon; height: $aboutIcon; margin: 0 $padding $padding 0;
-      @include desktop() { display: block; }}
+  .margin {
+    @include desktop() {
+      margin-top: calc(#{$padding} * 4) !important;
+    }
+  }
+
+  h1 { color: $teal; font-size: 24px; line-height: 32px; padding: calc(#{$padding}*3) calc(#{$padding}*3) 0 calc(#{$padding}*3);
+    @include desktop() { font-size: 30px; line-height: 40px; max-width: 515px; margin: auto;}
+  }
+  h2 {
+    color: $primaryText;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 400;
+    @include desktop() {
+      max-width: 515px;
+      margin: auto;
+    }
+  }
+  h3 {
+    font-size: 18px;
+    line-height: 26px;
+    font-family: $sans;
+    color: $secondaryText;
+    padding: calc(#{$padding} * 2);
+    @include desktop() {
+      max-width: 515px;
+      margin: auto;
+    }
+  }
+  p {
+    color: $lightGrayText;
+    padding-top: $padding;
+  }
+
+  .icons { display: flex; flex-direction: row; flex-wrap: wrap;
+    div { width: 50%; padding: $padding;
+      @include desktop() { width: 25% }
+    }
+    img { display: block; margin: 10px auto; width: 53px; }
     }
 
-  .pink * { color: $darkPink; fill: $darkPink; }
-  .green * { color: $green; fill: $green; }
-
-  .rating-list { display: flex; justify-content: center; }
-  .signup { background-image: url("../images/background_3.jpg"); background-size: cover; padding: 40px 20px; }
+  .signup { padding: 40px 20px; }
 }
 
-.GoodContainer {
-  @include desktop() {
-    display: flex;
-  }
-}
-.GoodFor {
-  padding: calc(#{$padding} * 3) 0;
-  border: 1px solid $borderColor;
+.Rating {
+  margin-top: calc(#{$padding} * 5);
 
-  .rating {
-    width: 150px;
+  p {
+    font-family: $serif;
+    font-size: 20px;
   }
   ul {
-    padding: $padding;
+    padding: calc(#{$padding} * 3) 0 0 calc(#{$padding} *2);
+    font-size: 14px;
     margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    list-style-image: url("../images/about/icon_check.svg");
-    list-style-position: inside;
   }
   li {
+    list-style-image: url("../images/about/icon_check.svg");
+    list-style-position: inside;
+    text-indent: -22px;
     padding-bottom: $padding;
     color: $secondaryText;
+    text-align: left;
+  }
+  @include desktop() {
+    .good-container {
+      display: flex;
+    }
+    .margin-fix {
+      border-right: none;
+    }
+  }
+}
+
+.GoodFor {
+  margin: calc(#{$padding}*4) 0;
+
+  h2 {
+    font-weight: 700;
+    font-size: 22px;
+    margin-top: $padding;
+  }
+  p {
+    font-family: $sans;
+    font-size: 15px;
+    line-height: 22px;
+    margin-top: $padding;
+    @include desktop() {
+      text-align: left;
+    }
+  }
+  .rating {
+    width: 64px;
+  }
+  .pink { color: $darkPink; fill: $darkPink; }
+  .green { color: $teal; fill: $teal; }
+
+  @include desktop() {
+    border: 1px solid $borderColor;
     width: 50%;
+    padding: calc(#{$padding}*4);
   }
 }
 
 .Example {
-  padding-top: calc(#{$padding} * 2);
-
   p {
     margin: $padding;
+    color: #959595;
+    font-size: 15px;
+    line-height: 24px;
   }
   img {
     width: 100%;
+    @include desktop() {
+      margin-top: calc(#{$padding} *2);
+    }
+  }
+  .heading {
+    font-family: $serif;
+
   }
   .content-container {
     display: flex;
@@ -66,46 +143,53 @@
 
     @include desktop() {
       flex-direction: row;
+      align-items: flex-start;
     }
   }
   .content {
-    @include desktop() {
-      text-align: left;
-      margin: 10px 20px 40px 30px
-    }
+    text-align: left;
 
-    p {
-    color: #959595;
-    font-size: 13px;
-    line-height: 20px;
+    @include desktop() {
+      width: 50%;
+      margin: calc(#{$padding} * 2);
     }
-    .uspto {
-      width: 60px;
-      margin-bottom: 8px;
-      @include desktop() {
-        margin-left: 12px;
-      }
-    }
-    .fsa {
-      width: 84px;
+    .nsf {
+      width: 75px;
+
     }
   }
 }
 
 .Why {
   background-image: url("../images/background_2.jpg");
-  background-position: 50% 60%;
-  background-size: cover;
-  padding: calc(#{$padding} * 4);
+  background-position: 50% 0%;
+  background-size: 350%;
+  background-repeat: no-repeat;
+  padding: calc(#{$padding} * 3);
 
+  @include desktop() {
+    background-size: cover;
+    padding-bottom: calc(#{$padding} * 8);
+    margin-bottom: calc(#{$padding} * 4);
+  }
+
+  h1 {
+    font-weight: 400;
+    color: $primaryText;
+    font-size: 26px;
+    padding-bottom: 0px;
+  }
   h3 {
-    margin: $padding 0 calc(#{$padding} * 3) 0;
+    font-weight: 400;
+    font-family: $serif;
+    padding-top: 10px;
+    padding-bottom: 40px;
   }
   p {
-    font-size: 18px;
+    font-size: 16px;
     background-color: white;
     padding: calc(#{$padding} * 2);
-    line-height: 30px;
+    line-height: 24px;
     @include desktop() {
       max-width: 715px;
       margin: 0 auto;
@@ -115,7 +199,14 @@
 }
 
 .Categories {
-  padding: 40px 20px 30px 20px;
+  padding: 0 calc(#{$padding} * 2);
+
+  h1 {
+    font-weight: 400;
+    color: $primaryText;
+    font-size: 26px;
+    padding: 0 calc(#{$padding} * 2);
+  }
   @include desktop() {
     max-width: 750px;
     margin: 0 auto;

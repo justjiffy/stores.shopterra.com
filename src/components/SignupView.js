@@ -9,7 +9,7 @@ export default class SignupView extends Component {
       <div className="Signup">
         <section>
         { props.submitMsg ?
-          <h1>Thanks!</h1>
+          <h1 className="confirmation">Thanks!</h1>
           :
           <div>
             <h2>{props.pitch}</h2>
