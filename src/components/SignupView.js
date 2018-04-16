@@ -9,7 +9,7 @@ export default class SignupView extends Component {
       <div className="Signup">
         <section>
         { props.submitMsg ?
-          <h1 className="confirmation">Thanks!</h1>
+          <p className="confirmation">{"Thank you for your interest in being a Seller on Shopterra. We cherish your partnership. Our goal is to promote awareness of your wonderful products to a wider audience, while  increasing your sales. A representative will contact you by e-mail within 7 days to understand your selling needs"}</p>
           :
           <div>
             <h2>{props.pitch}</h2>
