@@ -81,7 +81,7 @@ class GoodForYou extends Component {
             <li>Certified Safety Testing</li>
             <li>Naturally-derived or synthetic</li>
             <li>Ingredients</li>
-            <li>Parabin-free</li>
+            <li>Paraben-free</li>
             <li>CIT/MIT-free</li>
             <li>Free from formaldehyde donors</li>
             <li>Sulfate-free</li>
@@ -107,7 +107,7 @@ class GoodForEarth extends Component {
             <li>Product impact to the environment</li>
             <li>Product biodegradability</li>
             <li>Product carbon footprint</li>
-            <li>Packaing impact to the environment</li>
+            <li>Packaging impact to the environment</li>
             <li>Packaging ease of re-use</li>
             <li>Recyclability</li>
           </ul>
@@ -157,16 +157,16 @@ class Categories extends Component {
         <h1>{`Categories we'll specialize in first`}</h1>
         <div className="grid">
           <div>
-            <img src={images["category_personalcare.jpg"]}  alt="category"/>
+            <img src={images["category_personalcare.jpg"]}  alt="Personal Care"/>
           </div>
           <div>
-            <img src={images["category_petcare.jpg"]} alt="category"/>
+            <img src={images["category_petcare.jpg"]} alt="Pet Care"/>
           </div>
           <div>
-            <img src={images["category_homecare.png"]} alt="category"/>
+            <img src={images["category_homecare.jpg"]} alt="Home Care"/>
           </div>
           <div>
-            <img src={images["category_nutriments.jpg"]} alt="category"/>
+            <img src={images["category_nutriments.jpg"]} alt="Nutriments"/>
           </div>
         </div>
       </div>

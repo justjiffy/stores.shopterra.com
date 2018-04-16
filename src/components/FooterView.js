@@ -8,8 +8,12 @@ export default class FooterView extends Component {
   render() {
     return (
       <div className="Footer">
-        <img src={instagram} className="social" alt="instagram" />
-        <img src={facebook} className="social" alt="facebook" />
+        <a href="https://www.instagram.com/Shopterra_/">
+          <img src={instagram} className="social" alt="instagram" />
+        </a>
+        <a href="https://www.facebook.com/Shopterra-650775488461881">
+          <img src={facebook} className="social" alt="facebook" />
+        </a>
         <div>
           <img src={logo} className="logo" alt="logo" />
           <p>Shopterra Inc. &copy; 2018</p>
