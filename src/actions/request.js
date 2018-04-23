@@ -21,7 +21,7 @@ export const helloKey      = 'hello'
 
 export const baseUrl = window.location.href.match(/localhost/)
   ? 'http://localhost:3000'
-  : 'https://apistaging.shopterra.com'
+  : 'https://stagingapi.shopterra.com'
 
 /**
  * graph is a convenience wrapper around request for making graphql queries.
