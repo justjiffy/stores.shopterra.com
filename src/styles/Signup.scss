@@ -1,59 +1,32 @@
-@import "variables.scss";
-
-.Signup {
-  margin-bottom: 20px;
-
-  @include desktop() {
-    max-width: 515px;
-    margin: 0 auto;
-  }
-  section {
-    h2 {
-      font-size: 20px !important;
-      margin: $padding 0;
-    }
-  }
-  
+.Create {
   form {
-    display: flex;
-    flex-direction: column;
-    * {
-      font-size: 19px;
-      padding: calc(#{$padding} * 1.25);
-      border-radius: 36px;
-      margin: calc(#{$padding} / 2) 0;
+    flex-direction: column !important;
+    input {
+      margin: 10px auto;
+      width: 100%;
+
+      &[type="checkbox"] {
+        margin-right: 15px;
+        margin-left: -10px;
+        border-radius: 2px;
+        background-color: white;
+        width: 20px;
+      }
     }
-    @include desktop() {
-      flex-direction: row;
-    }
-  }
-  input {
-    text-align: center;
-    border: 1px solid $lightGrayText;
-    color: $formPlaceholder;
-    @include desktop() {
-      width: 60%;
-      margin: calc(#{$padding} / 2 ) $padding;
+    p, a {
+      font-size: 14px;
+      letter-spacing: -0.5px;
+      line-height: 16px !important;
       text-align: left;
+      padding: 0;
     }
-    &:focus {
-      outline: none;
-      border: 1px solid $teal;
-      background: white;
-    }
-    &:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 30px white inset;
+    div {
+      display: flex;
+      align-items: center;
     }
   }
   button {
-    background-color: $teal;
-    color: white;
-    @include desktop() {
-      width: 35%;
-    }
-  }
-  .confirmation {
-    color: $primaryText;
-    padding-bottom: 20px;
+    width: 80%;
+    margin: auto;
   }
 }

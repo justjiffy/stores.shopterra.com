@@ -3,31 +3,31 @@ import {connect}          from 'react-redux'
 import SignupView         from '../components/SignupView'
 import {
   graph,
-  subscriberKey,
-  helloKey
+  subscriberKey
 } from '../actions/request'
 
 
 class Signup extends Component {
   state = {
-    email: ''
+    email: '',
+    password: ''
   }
 
   constructor(props) {
     super(props)
-    this.updateEmail = this.updateEmail.bind(this)
+    this.updateElement = this.updateElement.bind(this)
   }
 
-  updateEmail(email) {
-    this.setState({email})
+  updateElement(name, value) {
+    this.setState({[name]: value})
   }
 
   render() {
     return (
       <SignupView {...this.props}
-        email={this.state.email}
-        updateEmail={this.updateEmail}
-        />
+        element={this.state}
+        updateElement={this.updateElement}
+      />
     )
   }
 }
@@ -50,7 +50,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    submit: (email) => {
+    submitPre: (element) => {
+      const email = element.email;
       return dispatch(graph(subscriberKey, `
         mutation createSubscriber($input: SubscriberInput!) {
           ok:addSubscriber(input: $input)
@@ -58,15 +59,11 @@ function mapDispatchToProps(dispatch) {
       `, {input: {email}}
       ))
     },
-    hello: () => {
-      return dispatch(graph(helloKey, `
-        {
-          hello {
-            hi
-          }
-        }
-      `))
-    }
+    submitPost: (element) => {
+      const email = element.email;
+      const password = element.password;
+      return console.log("submitPost called, ", email, password);
+    },
   }
 }
 

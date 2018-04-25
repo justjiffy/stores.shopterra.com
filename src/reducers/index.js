@@ -12,7 +12,9 @@ import {
 
 // Import all reducers here. Wish we could do this automatically for every other
 // file in the directory, but I can't figure out a way to get that to work with import
-import api       from './api'
+import api               from './api'
+import modal             from './modal'
+import registration      from './registration'
 
 // Allow support of actions with asynchronous results in the future
 const middleware = [thunk]
@@ -34,7 +36,7 @@ const config = {
 
 // redux-persist makes you use this instead of vanilla combineReducers :/
 const reducers = persistCombineReducers(config, {
-  api,
+  api, modal, registration
 })
 
 // Create our store object

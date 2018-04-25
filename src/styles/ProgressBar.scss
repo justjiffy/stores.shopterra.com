@@ -1,0 +1,65 @@
+@import "variables.scss";
+
+.ProgressBar {
+  height: 100px;
+  width: 100%;
+  background-color: $formBackground;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 25%;
+  flex-wrap: wrap;
+
+  section {
+    margin: 0;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    border: 3px solid white !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    align-self: center;
+
+
+    span {
+      text-align: center;
+      svg {
+        path {
+          stroke: white;
+          fill: white;
+          stroke-width: 4px;
+        }
+      }
+    }
+  }
+
+  hr {
+    background-color: white;
+    width: 40px;
+    height: 3px;
+    border-style: none;
+    margin: 0;
+  }
+
+  .inProgress {
+    border-color: #3AAAB2 !important;
+  }
+
+  .complete {
+    border-color: #3AAAB2 !important;
+    span {
+      svg {
+        path {
+          stroke: $teal !important;
+          fill: $teal !important;
+        }
+      }
+    }
+    & + hr {
+      background-color: $teal !important;
+    }
+  }
+}

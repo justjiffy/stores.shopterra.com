@@ -2,6 +2,9 @@ $primaryText: #454545;
 $secondaryText: #616575;
 $lightGrayText: #747474;
 $formPlaceholder: #A4A4A4;
+$formBackground: #D1E5E7;
+$formBorder: #979797;
+
 $iconOff: #C1C1C1;
 $borderColor: #CCCCCC;
 $lightGrayBg: #F1F1F1;
@@ -13,6 +16,7 @@ $padding: 10px;
 $aboutIcon: 53px;
 $serif: 'PT Serif', serif;
 $sans: 'Montserrat', sans-serif;
+$icon: 'Icons';
 
 @mixin desktop() {
   @media only screen and (min-width: 768px) { @content }

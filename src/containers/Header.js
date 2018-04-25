@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect}          from 'react-redux'
-import HeaderView       from '../components/HeaderView'
+import { withRouter }     from 'react-router-dom'
+import HeaderView         from '../components/HeaderView'
 
 class Header extends Component {
   render() {
@@ -22,4 +23,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header))

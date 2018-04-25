@@ -6,6 +6,22 @@ export default class SignupView extends Component {
     const {props} = this
 
     return (
+      <div>
+      { props.type === "preLaunch" ?
+        <PreLaunch {...this.props} />
+        :
+        <PostLaunch {...this.props} />
+      }
+      </div>
+    )
+  }
+}
+
+class PreLaunch extends Component {
+  render() {
+    const {props} = this
+
+    return (
       <div className="Signup">
         <section>
         { props.submitMsg ?
@@ -13,16 +29,54 @@ export default class SignupView extends Component {
           :
           <div>
             <h2>{props.pitch}</h2>
-            <form onSubmit={(e) => {e.preventDefault(); props.submit(props.email) }}>
-              <input type="email" name="email" value={props.email}
-                     onChange={(e) => props.updateEmail(e.target.value)}
+            <form onSubmit={(e) => {e.preventDefault(); props.submitPre(props.element) }}>
+              <input type="email" name="email" value={props.element.email}
+                     onChange={(e) => props.updateElement(e.target.name, e.target.value)}
                      autoComplete="email" placeholder="enter your email"/>
               <button>Notify Me</button>
             </form>
           </div>
         }
-      </section>
-    </div>
+        </section>
+      </div>
+    )
+  }
+}
+
+class PostLaunch extends Component {
+
+  render() {
+    const {props} = this
+
+    return (
+      <div className="Signup Create">
+        <section>
+        { props.submitMsg ?
+          <div>
+            <h2>Your account has been created</h2>
+            <button className="button">Log In</button>
+          </div>
+          :
+          <div>
+            <h2>{props.pitch}</h2>
+            <p>Create your login details so we can save your progress</p>
+            <form onSubmit={(e) => {e.preventDefault(); props.submitPost(props.element)}}>
+              <input type="email" name="email" value={props.element.email}
+                     onChange={(e) => props.updateElement(e.target.name, e.target.value)}
+                     autoComplete="email" placeholder="email address"/>
+              <input type="password" name="password" value={props.element.password}
+               onChange={(e) => props.updateElement(e.target.name, e.target.value)}
+               autoComplete="password" placeholder="password"/>
+             <div>
+               <input required type="checkbox"></input>
+               <p>I Agree to the following <a href="#">Terms of Service</a> and <a href="#">Privacy Agreement</a></p>
+             </div>
+              <button>Register Account</button>
+            </form>
+          </div>
+        }
+        </section>
+      </div>
     )
   }
 }

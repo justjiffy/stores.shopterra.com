@@ -11,8 +11,8 @@ body, h1, h2, h3, p { margin: 0; padding: 0; font-weight: 400;}
 .desktop { display: none;
   @include desktop() { display: block }
 }
-.mobile { display: block;
-  @include desktop() { display: none; }
+.mobile { display: block !important;
+  @include desktop() { display: none !important; }
 }
 
 .App {
@@ -80,5 +80,49 @@ hr {
     float: right;
     width: 27px;
     margin-left: $padding;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  * {
+    font-size: 16px;
+    padding: $padding;
+    margin: calc(#{$padding} / 2) 0;
+  }
+  @include desktop() {
+    flex-direction: row;
+  }
+}
+fieldset {
+  border: none;
+  margin: 0 auto;
+}
+input, textarea, .file {
+  width: 100%;
+  border-radius: 36px;
+  text-align: center;
+  border: 1px solid $formBorder;
+  color: $formPlaceholder;
+  @include desktop() {
+    width: 60%;
+    margin: calc(#{$padding} / 2 ) $padding;
+  }
+  &:focus {
+    outline: none;
+    border: 1px solid $teal;
+    background: white;
+  }
+}
+
+button {
+  border-radius: 36px;
+  background-color: $teal;
+  color: white;
+  @include desktop() {
+    width: 30%;
+    margin: calc(#{$padding} / 2 ) $padding;
   }
 }

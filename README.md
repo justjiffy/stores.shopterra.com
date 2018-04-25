@@ -14,7 +14,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Developing on shared stylesheet (optional)
 
-In locally cloned https://github.com/superseriouscompany:
+In locally cloned https://github.com/justjiffy:
 
     npm link
 
